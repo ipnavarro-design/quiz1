@@ -1,0 +1,7 @@
+{
+  "name": "DOLOR CIAO - Quiz de Calificación",
+  "description": "Quiz de evaluación para dolor de columna, hernia de disco o ciática por DOLOR CIAO.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
