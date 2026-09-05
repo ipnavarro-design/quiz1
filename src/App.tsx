@@ -55,7 +55,7 @@ export default function App() {
     duracionRutinas: '',
     horasSueno: '',
     consumoAgua: '',
-    pregunta4: '',
+    pregunta4: [],
     pregunta5: '',
     objetivos30Dias: [],
   });
@@ -181,8 +181,8 @@ export default function App() {
   };
 
   // Step 20: Diagnóstico médico previo
-  const handleSelectPregunta4 = (option: string) => {
-    setRespuestas((prev) => ({ ...prev, pregunta4: option }));
+  const handleSelectPregunta4 = (options: string[]) => {
+    setRespuestas((prev) => ({ ...prev, pregunta4: options }));
     goToNextScreen();
   };
 
@@ -227,7 +227,11 @@ export default function App() {
   const handleFinalCheckoutAction = () => {
     setIsFinalSubmitted(true);
     alFinalizarFunnel(respuestas);
-    window.location.href = 'https://dolorciaopago.myshopify.com/cart/46514408620129:1?checkout';
+    const checkoutUrl = 'https://dolorciaopago.myshopify.com/cart/46514408620129:1?checkout';
+    const opened = window.open(checkoutUrl, '_blank', 'noopener,noreferrer');
+    if (!opened) {
+      window.location.href = checkoutUrl;
+    }
   };
 
   return (

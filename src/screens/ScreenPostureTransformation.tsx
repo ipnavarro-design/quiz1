@@ -8,12 +8,12 @@ interface ScreenPostureTransformationProps {
 }
 
 // ============================================================================
-// CONFIGURACIÓN DE IMÁGENES DEL CASO DE ÉXITO
+// CONFIGURACIÓN DE IMÁGENES DEL CASO DE ÉXITO (Optimizado en WebP 24KB)
 // ============================================================================
-const IMAGEN_ANTES = '/images/posture-antes.png';
-const IMAGEN_DESPUES = '/images/posture-despues.png';
-const FALLBACK_IMAGEN_ANTES = '/images/posture-transformation.png';
-const FALLBACK_IMAGEN_DESPUES = '/images/posture-transformation.png';
+const IMAGEN_ANTES = '/images/posture-antes.webp';
+const IMAGEN_DESPUES = '/images/posture-despues.webp';
+const FALLBACK_IMAGEN_ANTES = '/images/posture-antes.png';
+const FALLBACK_IMAGEN_DESPUES = '/images/posture-despues.png';
 
 export const ScreenPostureTransformation: React.FC<ScreenPostureTransformationProps> = ({
   onContinue,
@@ -54,6 +54,8 @@ export const ScreenPostureTransformation: React.FC<ScreenPostureTransformationPr
               alt="Caso de éxito postura - Antes"
               className="w-full h-full object-cover object-center"
               referrerPolicy="no-referrer"
+              loading="eager"
+              decoding="async"
               onError={() => setImgAntesError(true)}
             />
             {/* Tag Badge: Antes */}
@@ -69,6 +71,8 @@ export const ScreenPostureTransformation: React.FC<ScreenPostureTransformationPr
               alt="Caso de éxito postura - Después"
               className="w-full h-full object-cover object-center"
               referrerPolicy="no-referrer"
+              loading="eager"
+              decoding="async"
               onError={() => setImgDespuesError(true)}
             />
             {/* Tag Badge: Después */}

@@ -17,7 +17,7 @@ export interface QuizResponses {
   duracionRutinas: string; // Duración deseada de las rutinas
   horasSueno: string; // Horas de sueño y descanso
   consumoAgua: string; // Consumo de agua diario
-  pregunta4: string; // Diagnóstico médico previo
+  pregunta4: string[]; // Diagnósticos médicos previos (selección múltiple)
   pregunta5: string; // Impacto en la vida diaria
   objetivos30Dias: string[]; // Objetivos para los próximos 30 días
 }

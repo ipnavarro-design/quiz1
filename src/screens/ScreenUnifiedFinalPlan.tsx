@@ -48,7 +48,10 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
     if (onFinalAction) {
       onFinalAction();
     }
-    window.location.href = CHECKOUT_SHOPIFY_URL;
+    const opened = window.open(CHECKOUT_SHOPIFY_URL, '_blank', 'noopener,noreferrer');
+    if (!opened) {
+      window.location.href = CHECKOUT_SHOPIFY_URL;
+    }
   };
 
   const scrollToCheckout = () => {
@@ -762,6 +765,8 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
             <PrimaryButton
               id="btn-checkout-cta"
               variant="green"
+              href={CHECKOUT_SHOPIFY_URL}
+              target="_blank"
               onClick={handleCheckout}
             >
               OBTENER MI PLAN DOLORCIAO
@@ -851,6 +856,8 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
           <PrimaryButton
             id="btn-bottom-final-cta"
             variant="green"
+            href={CHECKOUT_SHOPIFY_URL}
+            target="_blank"
             onClick={handleCheckout}
           >
             OBTENER MI PLAN DOLORCIAO
