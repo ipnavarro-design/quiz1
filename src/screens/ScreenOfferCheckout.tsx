@@ -16,12 +16,7 @@ export const ScreenOfferCheckout: React.FC<ScreenOfferCheckoutProps> = ({
 }) => {
   // Countdown Timer (15 mins = 900s)
   const [timeLeft, setTimeLeft] = useState(899);
-  const [openFaqs, setOpenFaqs] = useState<Record<number, boolean>>({
-    0: true,
-    1: true,
-    2: true,
-    3: true,
-  });
+  const [openFaqs, setOpenFaqs] = useState<Record<number, boolean>>({});
 
   const toggleFaq = (idx: number) => {
     setOpenFaqs((prev) => ({ ...prev, [idx]: !prev[idx] }));
@@ -217,6 +212,10 @@ export const ScreenOfferCheckout: React.FC<ScreenOfferCheckoutProps> = ({
           <div className="flex items-center gap-2">
             <span className="text-[#0E4A72] font-bold">✓</span>
             <span>Programa guiado de 30 días en video HD (10-15 min/día)</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[#0E4A72] font-bold">✓</span>
+            <span>Biblioteca con más de 70 ejercicios de movilidad</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[#0E4A72] font-bold">✓</span>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, ChevronUp, Check, CheckCircle2, Shield, Smartphone, Video, Camera, Calendar, Award, Droplets, Activity, Clock, Sliders, Dumbbell, TrendingUp, Sparkles } from 'lucide-react';
+import { ChevronDown, ChevronUp, Check, CheckCircle2, Shield, Smartphone, Video, Camera, Calendar, Award, Droplets, Activity, Clock, Sliders, Dumbbell, TrendingUp, Sparkles, Library } from 'lucide-react';
 import { Eyebrow } from '../components/Eyebrow';
 import { ProgressBar } from '../components/ProgressBar';
 import { PrimaryButton } from '../components/PrimaryButton';
@@ -16,12 +16,7 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
 }) => {
   // Countdown Timer (15 mins = 900s)
   const [timeLeft, setTimeLeft] = useState(899);
-  const [openFaqs, setOpenFaqs] = useState<Record<number, boolean>>({
-    0: true,
-    1: true,
-    2: true,
-    3: true,
-  });
+  const [openFaqs, setOpenFaqs] = useState<Record<number, boolean>>({});
   const [selectedPhase, setSelectedPhase] = useState<1 | 2 | 3>(1);
   const [showAllDays, setShowAllDays] = useState(false);
 
@@ -608,23 +603,33 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
         {/* BLOQUE 2: PROGRESO & HÁBITOS */}
         <div className="w-full grid grid-cols-[1.15fr_0.85fr] sm:grid-cols-2 items-center gap-2 sm:gap-6 py-2">
           {/* Columna Izquierda: Puntos clave sin descripciones */}
-          <div className="flex flex-col justify-center gap-7 sm:gap-9 pl-1 sm:pl-4">
-            {/* Punto 3 */}
+          <div className="flex flex-col justify-center gap-6 sm:gap-8 pl-1 sm:pl-4">
+            {/* Punto 4: Biblioteca de Ejercicios */}
+            <div className="flex flex-col items-start text-left gap-2 sm:gap-2.5">
+              <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-[#75B597] text-white flex items-center justify-center shadow-xs shrink-0">
+                <Library className="w-5 h-5 sm:w-6 sm:h-6" />
+              </div>
+              <span className="font-bold text-[#1E293B] text-[14px] sm:text-[16.5px] leading-snug">
+                Biblioteca con más de 70 ejercicios de movilidad
+              </span>
+            </div>
+
+            {/* Punto 5 */}
             <div className="flex flex-col items-start text-left gap-2 sm:gap-2.5">
               <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-[#75B597] text-white flex items-center justify-center shadow-xs shrink-0">
                 <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <span className="font-bold text-[#1E293B] text-[14.5px] sm:text-[17px] leading-snug">
+              <span className="font-bold text-[#1E293B] text-[14px] sm:text-[16.5px] leading-snug">
                 Resultados visibles en tu primer mes
               </span>
             </div>
 
-            {/* Punto 4 */}
+            {/* Punto 6 */}
             <div className="flex flex-col items-start text-left gap-2 sm:gap-2.5">
               <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-[#75B597] text-white flex items-center justify-center shadow-xs shrink-0">
                 <Sparkles className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <span className="font-bold text-[#1E293B] text-[14.5px] sm:text-[17px] leading-snug">
+              <span className="font-bold text-[#1E293B] text-[14px] sm:text-[16.5px] leading-snug">
                 Control de hábitos y análisis de progreso
               </span>
             </div>
@@ -660,7 +665,7 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
             <span className="text-[#0E4A72] font-extrabold">DolorCiao</span>
           </h2>
           <p className="text-[14px] text-slate-600 max-w-md mx-auto">
-            {userName}, tu membresía incluye el programa de 30 días, la app móvil, el seguimiento fotográfico (opcional y privado para vos) y el sistema de hábitos de por vida.
+            {userName}, tu membresía incluye el programa de 30 días, la biblioteca con más de 70 ejercicios de movilidad, la app móvil, el seguimiento fotográfico (opcional y privado para vos) y el sistema de hábitos de por vida.
           </p>
         </div>
 
@@ -724,6 +729,10 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
             <div className="flex items-center gap-2">
               <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
               <span>Programa guiado de 30 días en video HD (10-15 min/día)</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
+              <span>Biblioteca con más de 70 ejercicios de movilidad</span>
             </div>
             <div className="flex items-center gap-2">
               <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
