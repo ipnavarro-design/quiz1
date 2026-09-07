@@ -24,6 +24,13 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
     setOpenFaqs((prev) => ({ ...prev, [idx]: !prev[idx] }));
   };
 
+  // Track Meta Pixel Lead event when reaching the final results plan screen
+  useEffect(() => {
+    if (typeof window !== 'undefined' && typeof (window as any).fbq === 'function') {
+      (window as any).fbq('track', 'Lead');
+    }
+  }, []);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
