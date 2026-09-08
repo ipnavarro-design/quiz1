@@ -48,14 +48,10 @@ export const Screen2Duration: React.FC<Screen2DurationProps> = ({ onSelectOption
       {/* Screen Title & Reinforcement */}
       <div className="w-full">
         <ScreenHeading as="h2" id="q2-title">
-          ¿Hace cuánto tiempo sientes ese{' '}
-          <span className="bg-[#DC2626] text-white px-2 py-0.5 rounded-md inline-block">
-            dolor
-          </span>
-          ?
+          ¿Hace cuánto tiempo sentís esa molestia?
         </ScreenHeading>
         <ReinforcementText>
-          Tus respuestas nos ayudan a entender el origen de tu dolor.
+          Tus respuestas nos ayudan a personalizar mejor tu rutina.
         </ReinforcementText>
       </div>
 

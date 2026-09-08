@@ -20,7 +20,7 @@ export const ScreenSleepImpact: React.FC<ScreenSleepImpactProps> = ({
       id: 'opt-sleep-low',
       emoji: '🌙',
       title: 'Menos de 5 horas',
-      desc: 'El dolor o los pinchazos lumbares me despiertan repetidamente de noche.',
+      desc: 'La molestia en la zona lumbar me despierta repetidamente de noche.',
     },
     {
       id: 'opt-sleep-med',
@@ -71,7 +71,7 @@ export const ScreenSleepImpact: React.FC<ScreenSleepImpactProps> = ({
           tu descanso?
         </ScreenHeading>
         <ReinforcementText>
-          Durante el sueño profundo ocurre el 80% de la regeneración discal y desinflamación muscular.
+          Durante el sueño profundo tu cuerpo aprovecha para recuperarse y relajar la musculatura.
         </ReinforcementText>
       </div>
 
@@ -123,10 +123,10 @@ export const ScreenSleepImpact: React.FC<ScreenSleepImpactProps> = ({
         <div className="w-full bg-[#F0FDF4] border border-[#16A34A]/30 rounded-[18px] p-4.5 flex flex-col gap-2.5 shadow-xs animate-in fade-in zoom-in-95 duration-200">
           <div className="flex items-center gap-2 text-[#16A34A] font-bold text-[14.5px]">
             <span className="text-[18px]">🌙</span>
-            <span>¿Por qué el descanso es vital para sanar tu espalda?</span>
+            <span>¿Por qué el descanso es clave para tu espalda?</span>
           </div>
           <p className="text-[13.5px] text-neutral-700 leading-relaxed">
-            Durante la noche, la gravedad deja de comprimir tu columna y los discos vertebrales <strong className="text-[#1A1A1A]">se rehidratan y expanden</strong>. Un sueño interrumpido bloquea la relajación de la musculatura lumbar y perpetúa la inflamación nerviosa.
+            Durante la noche, tu espalda descansa del peso de estar de pie o sentado, y tus músculos se relajan. Un sueño interrumpido no permite que esa relajación se complete, y la tensión lumbar se mantiene.
           </p>
         </div>
       )}

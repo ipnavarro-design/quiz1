@@ -29,19 +29,19 @@ export const ScreenMovementJoints: React.FC<ScreenMovementJointsProps> = ({
     {
       id: 'hombros',
       name: 'Hombros / Trapecios',
-      description: 'Molestia o pinchazo al levantar peso o extender brazos',
+      description: 'Molestia al levantar peso o extender los brazos',
       icon: <ShouldersJointIcon className="w-16 h-16 sm:w-18 sm:h-18" />,
     },
     {
       id: 'cuello',
       name: 'Cuello / Cervicales',
-      description: 'Sobrecarga, contracturas o dolor al girar la cabeza',
+      description: 'Sobrecarga o tensión al girar la cabeza',
       icon: <NeckJointIcon className="w-16 h-16 sm:w-18 sm:h-18" />,
     },
     {
       id: 'codos',
       name: 'Codos / Brazos',
-      description: 'Molestia en tendones al apoyar, empujar o flexionar',
+      description: 'Molestia al apoyar, empujar o flexionar',
       icon: <ElbowJointIcon className="w-16 h-16 sm:w-18 sm:h-18" />,
     },
     {
@@ -53,13 +53,13 @@ export const ScreenMovementJoints: React.FC<ScreenMovementJointsProps> = ({
     {
       id: 'rodillas',
       name: 'Rodillas',
-      description: 'Crujidos, impacto o dolor al flexionar y subir escaleras',
+      description: 'Molestias al flexionar o subir escaleras',
       icon: <KneeJointIcon className="w-16 h-16 sm:w-18 sm:h-18" />,
     },
     {
       id: 'tobillos',
       name: 'Tobillos / Pies',
-      description: 'Inestabilidad, molestia en pisada o rigidez matutina',
+      description: 'Inestabilidad o molestia al pisar',
       icon: <AnkleJointIcon className="w-16 h-16 sm:w-18 sm:h-18" />,
     },
     {
@@ -110,7 +110,7 @@ export const ScreenMovementJoints: React.FC<ScreenMovementJointsProps> = ({
       <div className="w-full text-center space-y-2.5">
         <div className="inline-flex items-center gap-1.5 bg-emerald-100/80 text-emerald-800 border border-emerald-300 text-[12px] font-bold px-3 py-1 rounded-full">
           <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
-          <span>Calibración Biomecánica Personalizada</span>
+          <span>Personalización de tu Rutina</span>
         </div>
 
         <h2
@@ -118,15 +118,11 @@ export const ScreenMovementJoints: React.FC<ScreenMovementJointsProps> = ({
           className="text-[20px] sm:text-[23px] font-bold text-[#1A1A1A] leading-snug"
           style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}
         >
-          Además, ¿sientes{' '}
-          <span className="bg-[#DC2626] text-white px-2 py-0.5 rounded-md inline-block">
-            dolor o molestias
-          </span>{' '}
-          en alguna de estas articulaciones al moverte?
+          Además, ¿sentís tensión o rigidez en alguna de estas zonas al moverte?
         </h2>
 
         <p className="text-[13.5px] sm:text-[14px] text-neutral-600 max-w-md mx-auto leading-relaxed">
-          Adaptaremos los ejercicios para <strong>proteger tus zonas sensibles</strong> mientras recuperamos tu fuerza y movilidad articular sin riesgos.
+          Adaptaremos los ejercicios para cuidar tus zonas más sensibles mientras ganás fuerza y movilidad de forma segura.
         </p>
       </div>
 
@@ -207,7 +203,7 @@ export const ScreenMovementJoints: React.FC<ScreenMovementJointsProps> = ({
         <p className="text-[11.5px] text-center text-neutral-500 flex items-center justify-center gap-1.5">
           <span>🔒</span>
           <span>
-            Tu protocolo Dolor Ciao descartará movimientos que sobrecarguen estas áreas.
+            Tu programa DolorCiao evitará movimientos que sobrecarguen estas áreas.
           </span>
         </p>
       </div>

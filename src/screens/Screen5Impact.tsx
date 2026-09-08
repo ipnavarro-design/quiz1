@@ -55,18 +55,14 @@ export const Screen5Impact: React.FC<Screen5ImpactProps> = ({ onSelectOption }) 
     <div className="w-full flex flex-col gap-6">
       {/* Header section */}
       <div className="w-full">
-        <Eyebrow percentage={84} />
-        <ProgressBar progress={84} />
+        <Eyebrow percentage={80} />
+        <ProgressBar progress={80} />
       </div>
 
       {/* Screen Title & Reinforcement */}
       <div className="w-full">
         <ScreenHeading as="h2" id="q5-title">
-          ¿Cómo{' '}
-          <span className="bg-[#DC2626] text-white px-2 py-0.5 rounded-md inline-block">
-            afecta el dolor
-          </span>{' '}
-          tu vida cotidiana?
+          ¿Cómo afecta esta molestia tu vida cotidiana?
         </ScreenHeading>
         <ReinforcementText>
           Ya falta poco para terminar.

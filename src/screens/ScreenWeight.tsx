@@ -38,7 +38,7 @@ export const ScreenWeight: React.FC<ScreenWeightProps> = ({
           ¿Cuál es tu peso actual?
         </ScreenHeading>
         <ReinforcementText>
-          La carga corporal incide directamente en la presión que soportan los discos lumbares L4-L5 y L5-S1.
+          El peso corporal incide directamente en la carga que soporta tu zona lumbar durante el día.
         </ReinforcementText>
       </div>
 
@@ -110,11 +110,11 @@ export const ScreenWeight: React.FC<ScreenWeightProps> = ({
         </div>
       </div>
 
-      {/* Clinical Notice Box */}
+      {/* Notice Box */}
       <div className="w-full bg-[#F7F4EE] border border-[#1A1A1A]/10 rounded-[14px] p-3.5 flex items-center gap-3">
         <span className="text-[20px] shrink-0">💡</span>
         <p className="text-[13px] text-neutral-700 leading-snug">
-          Cada kilogramo liberado de tensión muscular reduce significativamente la carga axial sobre las raíces nerviosas y la ciática.
+          Cada kilogramo de menos en tensión muscular reduce significativamente la carga sobre tu espalda baja.
         </p>
       </div>
 

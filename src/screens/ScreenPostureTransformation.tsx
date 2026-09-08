@@ -36,9 +36,9 @@ export const ScreenPostureTransformation: React.FC<ScreenPostureTransformationPr
           className="text-[21px] sm:text-[25px] font-bold text-[#1A1A1A] leading-tight"
           style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}
         >
-          ¡No se trata solo de disminuir el dolor!{' '}
+          ¡No se trata solo de aliviar la rigidez!{' '}
           <span className="block mt-1 text-[#0E4A72]">
-            Así es como la movilidad puede cambiar tu postura
+            Así es como la movilidad transforma tu postura
           </span>
         </h2>
       </div>

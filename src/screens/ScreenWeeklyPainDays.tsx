@@ -47,14 +47,10 @@ export const ScreenWeeklyPainDays: React.FC<ScreenWeeklyPainDaysProps> = ({ onSe
         <ScreenHeading as="h2" id="q-days-weekly-title">
           En la última semana,
           <br className="hidden sm:inline" />
-          ¿cuántos días has sentido{' '}
-          <span className="bg-[#DC2626] text-white px-2 py-0.5 rounded-md inline-block">
-            dolor
-          </span>
-          ?
+          ¿cuántos días sentiste molestias o tensión?
         </ScreenHeading>
         <ReinforcementText>
-          Esto nos permite evaluar la frecuencia e inflamación activa.
+          Esto nos permite calibrar la intensidad de tu rutina.
         </ReinforcementText>
       </div>
 

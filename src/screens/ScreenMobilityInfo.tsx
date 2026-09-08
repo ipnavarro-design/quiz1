@@ -21,11 +21,11 @@ export const ScreenMobilityInfo: React.FC<ScreenMobilityInfoProps> = ({
       {/* Main Title inspired by the reference design */}
       <div className="w-full text-center flex flex-col gap-3">
         <h2 className="text-[20px] sm:text-[23px] font-extrabold text-[#0D3820] leading-[1.25] tracking-tight">
-          La Movilidad es un método terapéutico de descompresión y fortalecimiento que{' '}
-          <span className="text-[#16A34A]">elimina el dolor de espalda</span>
+          La Movilidad es una rutina de ejercicios de apertura articular y fortalecimiento que{' '}
+          <span className="text-[#16A34A]">alivia la tensión de espalda</span>
         </h2>
         <p className="text-[14px] sm:text-[14.5px] text-neutral-600 leading-relaxed max-w-md mx-auto">
-          En lugar de reposo forzado o cirugías, este método descompresiona las vértebras, reactiva el líquido sinovial y desbloquea las caderas para quitarle de raíz toda la sobrecarga a tu columna.
+          En lugar de quedarte quieto, esta rutina moviliza tus articulaciones, mejora la lubricación natural de tu cuerpo y desbloquea las caderas para aliviar la sobrecarga en tu espalda baja.
         </p>
       </div>
 
@@ -113,10 +113,10 @@ export const ScreenMobilityInfo: React.FC<ScreenMobilityInfoProps> = ({
               <span className="text-[12px] font-bold text-[#16A34A]">35%</span>
             </div>
             <span className="text-[12.5px] font-semibold text-[#1A1A1A] leading-tight">
-              Descompresión
+              Apertura articular
             </span>
             <span className="text-[11px] text-neutral-500 leading-snug">
-              Alivia presión en discos y ciática
+              Alivia la tensión en la zona lumbar
             </span>
           </div>
 
@@ -152,10 +152,10 @@ export const ScreenMobilityInfo: React.FC<ScreenMobilityInfoProps> = ({
               <span className="text-[12px] font-bold text-[#F59E0B]">15%</span>
             </div>
             <span className="text-[12.5px] font-semibold text-[#1A1A1A] leading-tight">
-              Lubricación
+              Lubricación articular
             </span>
             <span className="text-[11px] text-neutral-500 leading-snug">
-              Líquido sinovial contra la rigidez
+              Menos rigidez, más soltura
             </span>
           </div>
         </div>
@@ -168,7 +168,7 @@ export const ScreenMobilityInfo: React.FC<ScreenMobilityInfoProps> = ({
               ¿Por qué la movilidad de caderas es clave para tu espalda?
             </strong>
             <span>
-              Cuando pasamos horas sentados, las caderas pierden rotación y se vuelven rígidas. Al no poder moverse libremente, <strong>la columna lumbar se ve forzada a absorber todo el peso y torsión</strong>, detonando pinzamientos, lumbalgias y ciática. Desbloquear las caderas elimina de inmediato hasta un 70% de la tensión acumulada en la espalda baja.
+              Cuando pasamos horas sentados, las caderas pierden rotación y se vuelven rígidas. Al no poder moverse libremente, la zona lumbar termina cargando con más tensión de la que debería, generando molestias y rigidez en la espalda baja. Desbloquear las caderas elimina de inmediato hasta un 70% de la tensión acumulada en la espalda baja.
             </span>
           </div>
         </div>

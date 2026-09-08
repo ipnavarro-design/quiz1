@@ -43,7 +43,7 @@ export const ScreenHeight: React.FC<ScreenHeightProps> = ({
           ¿Cuánto medís?
         </ScreenHeading>
         <ReinforcementText>
-          Tu estatura nos ayuda a calcular los ángulos óptimos de descompresión articular.
+          Tu estatura nos ayuda a calcular los ángulos óptimos de tus ejercicios de movilidad.
         </ReinforcementText>
       </div>
 

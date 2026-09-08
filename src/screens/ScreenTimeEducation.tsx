@@ -35,7 +35,7 @@ export const ScreenTimeEducation: React.FC<ScreenTimeEducationProps> = ({
           al día
         </h2>
         <p className="text-[14px] text-neutral-600 max-w-md mx-auto">
-          No necesitas sesiones agotadoras de gimnasio ni pasar horas con máquinas. La clave científica del alivio duradero son las micro-dosis de descompresión guiada mediante la movilidad.
+          No necesitas sesiones agotadoras de gimnasio ni pasar horas con máquinas. La clave para sentirte mejor de forma duradera son las micro-rutinas de movilidad guiada.
         </p>
       </div>
 
@@ -47,10 +47,10 @@ export const ScreenTimeEducation: React.FC<ScreenTimeEducationProps> = ({
           </div>
           <div className="flex flex-col">
             <span className="font-semibold text-[#1A1A1A] text-[15px]">
-              Descompresión articular lumbar
+              Movilidad lumbar
             </span>
             <span className="text-[13px] text-neutral-500">
-              Crea espacio entre vértebras y libera el pinzamiento de la raíz nerviosa.
+              Genera más soltura y libertad de movimiento en la zona baja de la espalda.
             </span>
           </div>
         </div>
@@ -61,10 +61,10 @@ export const ScreenTimeEducation: React.FC<ScreenTimeEducationProps> = ({
           </div>
           <div className="flex flex-col">
             <span className="font-semibold text-[#1A1A1A] text-[15px]">
-              Liberación miofascial y flexibilidad
+              Estiramiento y flexibilidad
             </span>
             <span className="text-[13px] text-neutral-500">
-              Desactiva contracturas profundas en glúteos, piramidal y psoas ilíaco.
+              Libera tensión profunda en glúteos y cadera.
             </span>
           </div>
         </div>
@@ -75,10 +75,10 @@ export const ScreenTimeEducation: React.FC<ScreenTimeEducationProps> = ({
           </div>
           <div className="flex flex-col">
             <span className="font-semibold text-[#1A1A1A] text-[15px]">
-              Activación postural preventiva
+              Activación del core
             </span>
             <span className="text-[13px] text-neutral-500">
-              Fortalece la faja abdominal natural para blindar tu columna todo el día.
+              Fortalece tu zona media para sostener mejor tu postura todo el día.
             </span>
           </div>
         </div>

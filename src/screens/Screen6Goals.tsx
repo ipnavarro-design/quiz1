@@ -20,7 +20,7 @@ export const Screen6Goals: React.FC<Screen6GoalsProps> = ({ onContinue }) => {
   const options: GoalOption[] = [
     {
       id: 'opt-goal-1',
-      label: 'Poder levantarme sin sentir dolor',
+      label: 'Poder levantarme sintiéndome ágil y sin rigidez',
       emoji: '🌅',
     },
     {
@@ -40,7 +40,7 @@ export const Screen6Goals: React.FC<Screen6GoalsProps> = ({ onContinue }) => {
     },
     {
       id: 'opt-goal-5',
-      label: 'Dormir toda la noche sin dolor',
+      label: 'Dormir toda la noche con comodidad',
       emoji: '🌙',
     },
     {
@@ -60,7 +60,7 @@ export const Screen6Goals: React.FC<Screen6GoalsProps> = ({ onContinue }) => {
     },
     {
       id: 'opt-goal-9',
-      label: 'Dejar atrás el dolor de espalda de una vez por todas',
+      label: 'Sentir mi espalda flexible, liviana y con energía',
       emoji: '🎯',
     },
   ];
@@ -81,10 +81,10 @@ export const Screen6Goals: React.FC<Screen6GoalsProps> = ({ onContinue }) => {
 
   return (
     <div className="w-full flex flex-col gap-6">
-      {/* Header section with 92% progress */}
+      {/* Header section with 88% progress */}
       <div className="w-full">
-        <Eyebrow percentage={92} />
-        <ProgressBar progress={92} />
+        <Eyebrow percentage={88} />
+        <ProgressBar progress={88} />
       </div>
 
       {/* Screen Title & Subtitle */}

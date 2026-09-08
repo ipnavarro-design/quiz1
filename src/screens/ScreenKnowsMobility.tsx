@@ -24,7 +24,7 @@ export const ScreenKnowsMobility: React.FC<ScreenKnowsMobilityProps> = ({
     {
       id: 'opt-mobility-never',
       label: 'Nunca escuché hablar de ella',
-      sublabel: 'Es mi primera vez y busco una solución segura y efectiva',
+      sublabel: 'Es mi primera vez y busco una rutina segura y efectiva',
     },
   ];
 

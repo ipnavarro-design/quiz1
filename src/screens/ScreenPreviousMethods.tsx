@@ -30,13 +30,8 @@ export const ScreenPreviousMethods: React.FC<ScreenPreviousMethodsProps> = ({ on
 
   const options: MethodOption[] = [
     {
-      id: 'opt-physio',
-      label: 'Kinesiólogo / Fisioterapeuta',
-      icon: <PhysioIcon className="w-11 h-11" />,
-    },
-    {
       id: 'opt-chiro',
-      label: 'Quiropraxia',
+      label: 'Terapias manuales',
       icon: <ChiroIcon className="w-11 h-11" />,
     },
     {
@@ -46,7 +41,7 @@ export const ScreenPreviousMethods: React.FC<ScreenPreviousMethodsProps> = ({ on
     },
     {
       id: 'opt-massage',
-      label: 'Masajes / Calor / Punción seca',
+      label: 'Masajes / Calor',
       icon: <MassageDryNeedleIcon className="w-11 h-11" />,
     },
     {
@@ -55,13 +50,8 @@ export const ScreenPreviousMethods: React.FC<ScreenPreviousMethodsProps> = ({ on
       icon: <SwimmingIcon className="w-11 h-11" />,
     },
     {
-      id: 'opt-painkillers',
-      label: 'Analgésicos / Pastillas',
-      icon: <PainkillersIcon className="w-11 h-11" />,
-    },
-    {
       id: 'opt-rest',
-      label: 'Reposo / Evitar el movimiento',
+      label: 'Descanso',
       icon: <RestImmobilityIcon className="w-11 h-11" />,
     },
     {
@@ -109,11 +99,7 @@ export const ScreenPreviousMethods: React.FC<ScreenPreviousMethodsProps> = ({ on
       {/* Screen Title & Subtitle */}
       <div className="w-full">
         <ScreenHeading as="h2" id="q-methods-title">
-          ¿Qué métodos has intentado{' '}
-          <span className="bg-[#DC2626] text-white px-2 py-0.5 rounded-md inline-block">
-            sin resultados
-          </span>
-          ?
+          ¿Qué actividades probaste antes para sentirte mejor?
         </ScreenHeading>
         <ReinforcementText>
           Puedes seleccionar más de una opción.

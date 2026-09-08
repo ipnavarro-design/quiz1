@@ -27,12 +27,12 @@ export const HeroCoverImage: React.FC = () => {
           className="text-[19px] sm:text-[22px] font-bold text-[#22C55E] drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] leading-tight my-1"
           style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}
         >
-          ¡VIVIR SIN DOLOR OTRA VEZ!
+          ¡SENTIRTE LIVIANO Y ÁGIL OTRA VEZ!
         </p>
 
         {/* Line 3: Small pill with brand blue background and white text */}
         <div className="inline-block bg-[#0E4A72] text-white text-[11px] font-bold tracking-[0.1em] uppercase px-3.5 py-1 rounded-full shadow-md mt-1 border border-white/20">
-          ¡NO SUFRAS MÁS!
+          ¡EMPEZÁ HOY!
         </div>
       </div>
     </div>

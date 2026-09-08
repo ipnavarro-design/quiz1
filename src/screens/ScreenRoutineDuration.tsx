@@ -23,19 +23,19 @@ export const ScreenRoutineDuration: React.FC<ScreenRoutineDurationProps> = ({
       id: 'opt-dur-20-40',
       emoji: '⏳',
       title: '20 a 40 minutos al día',
-      desc: 'Sesión integral de descompresión vertebral y movilidad guiada.',
+      desc: 'Sesión integral de movilidad guiada.',
     },
     {
       id: 'opt-dur-40-60',
       emoji: '⌛',
       title: '40 a 60 minutos al día',
-      desc: 'Enfoque profundo de restauración funcional y fortalecimiento postural.',
+      desc: 'Enfoque profundo de acondicionamiento y fortalecimiento postural.',
     },
     {
       id: 'opt-dur-auto',
       emoji: '🤖',
       title: 'Que la app decida por mí',
-      desc: 'Optimizar la duración diaria según mi nivel de dolor y progreso.',
+      desc: 'Optimizar la duración diaria según mi progreso.',
     },
   ];
 

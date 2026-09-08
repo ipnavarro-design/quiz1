@@ -48,10 +48,10 @@ export const ScreenName: React.FC<ScreenNameProps> = ({
           Personalización de tu programa
         </div>
         <ScreenHeading as="h2" id="q-name-title">
-          Tu plan para aliviar tu dolor de espalda está a punto de comenzar. ¿Cómo te llamás?
+          Tu plan para mejorar la movilidad de tu espalda está a punto de comenzar. ¿Cómo te llamás?
         </ScreenHeading>
         <p className="text-[14px] text-neutral-500 max-w-sm mt-1">
-          Queremos dirigirnos a vos con nombre propio en cada fase de tu recuperación.
+          Queremos dirigirnos a vos con nombre propio en cada fase de tu programa.
         </p>
       </div>
 

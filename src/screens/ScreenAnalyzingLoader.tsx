@@ -17,10 +17,10 @@ export const ScreenAnalyzingLoader: React.FC<ScreenAnalyzingLoaderProps> = ({
   const protectedCount = respuestas.zonasDolorMovimiento?.filter((z) => z !== 'ninguna').length || 0;
 
   const steps = [
-    'Analizando localización y tipo de dolor...',
+    'Analizando perfil postural y zonas de molestia...',
     protectedCount > 0
-      ? `Calibrando ejercicios para proteger ${protectedCount} zona(s) articular(es)...`
-      : 'Evaluando descompresión articular y nervio ciático...',
+      ? `Adaptando movimientos para proteger ${protectedCount} zona(s)...`
+      : 'Estructurando secuencia de movilidad y estiramientos...',
     'Ajustando micro-rutinas de 10-15 minutos...',
     'Estructurando calendario progresivo de 30 días...',
     '¡Tu plan personalizado DolorCiao está listo!',
@@ -94,11 +94,11 @@ export const ScreenAnalyzingLoader: React.FC<ScreenAnalyzingLoaderProps> = ({
           className="text-[24px] sm:text-[28px] font-bold text-[#1A1A1A] leading-snug"
           style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}
         >
-          Diseñando el plan de alivio para{' '}
+          Diseñando el plan de movilidad para{' '}
           <span className="text-[#16A34A]">{userName}</span>...
         </h2>
         <p className="text-[14px] text-neutral-500">
-          Personalizando la secuencia de descompresión según tu historial.
+          Personalizando la secuencia de ejercicios según tus necesidades.
         </p>
       </div>
 

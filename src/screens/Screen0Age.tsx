@@ -49,7 +49,7 @@ export const Screen0Age: React.FC<Screen0AgeProps> = ({ onSelectOption }) => {
       {/* Screen Title */}
       <div className="w-full">
         <ScreenHeading as="h2" id="q0-age-title">
-          Adapta tu plan de eliminación de dolor a tu edad
+          Adapta tu plan de movilidad a tu edad
         </ScreenHeading>
         <p
           id="q0-age-subtitle"

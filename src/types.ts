@@ -43,15 +43,14 @@ export type ScreenIndex =
   | 17 // Educacion tiempo (10-15 min)
   | 18 // Horas de sueno
   | 19 // Consumo de agua + Info
-  | 20 // Diagnostico medico previo
-  | 21 // Impacto en vida diaria
-  | 22 // Probabilidad de que el dolor se vuelva cronico
-  | 23 // Objetivos 30 dias
-  | 24 // Resumen nivel de dolor / movilidad
-  | 25 // Transformacion postural (¡No se trata solo de disminuir el dolor!)
-  | 26 // Proyeccion de resultados (Hoy vs 21 dias)
-  | 27 // Loader analizando respuestas
-  | 28; // Etapa final unificada: Plan listo, Metodología/Calendario, Testimonios, Bonuses, Oferta & Checkout
+  | 20 // Impacto en vida diaria
+  | 21 // Prevención y riesgos
+  | 22 // Objetivos 30 dias
+  | 23 // Resumen nivel de rigidez / movilidad
+  | 24 // Transformacion postural
+  | 25 // Proyeccion de resultados (Hoy vs 21 dias)
+  | 26 // Loader analizando respuestas
+  | 27; // Etapa final unificada: Plan listo, Metodología/Calendario, Testimonios, Bonuses, Oferta & Checkout
 
 export const PROGRESS_MAP: Record<ScreenIndex, number> = {
   0: 0,
@@ -74,15 +73,14 @@ export const PROGRESS_MAP: Record<ScreenIndex, number> = {
   17: 64,
   18: 68,
   19: 72,
-  20: 78,
-  21: 82,
-  22: 86,
-  23: 90,
-  24: 94,
-  25: 97,
+  20: 80,
+  21: 84,
+  22: 88,
+  23: 92,
+  24: 96,
+  25: 100,
   26: 100,
   27: 100,
-  28: 100,
 };
 
 // Punto final del funnel. Acción posterior a definir en un paso futuro. No implementar redirección a WhatsApp ni ningún otro destino aquí todavía.

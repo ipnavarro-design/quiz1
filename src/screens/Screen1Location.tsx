@@ -23,13 +23,8 @@ export const Screen1Location: React.FC<Screen1LocationProps> = ({ onSelectOption
     },
     {
       id: 'opt-pierna',
-      label: 'Dolor que baja por la pierna',
+      label: 'Molestia que se extiende hacia la pierna',
       icon: <SciaticLegIcon />,
-    },
-    {
-      id: 'opt-hormigueo',
-      label: 'Dolor de espalda con hormigueo o adormecimiento',
-      icon: <TinglingSpineIcon />,
     },
   ];
 
@@ -44,11 +39,7 @@ export const Screen1Location: React.FC<Screen1LocationProps> = ({ onSelectOption
       {/* Screen Title */}
       <div className="w-full">
         <ScreenHeading as="h2" id="q1-title">
-          ¿Dónde sientes el{' '}
-          <span className="bg-[#DC2626] text-white px-2 py-0.5 rounded-md inline-block">
-            dolor o molestia
-          </span>
-          ?
+          ¿Dónde sentís más tensión o rigidez?
         </ScreenHeading>
       </div>
 

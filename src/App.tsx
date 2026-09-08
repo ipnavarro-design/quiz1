@@ -21,7 +21,6 @@ import { ScreenRoutineDuration } from './screens/ScreenRoutineDuration';
 import { ScreenSleepImpact } from './screens/ScreenSleepImpact';
 import { ScreenWaterIntake } from './screens/ScreenWaterIntake';
 import { ScreenTimeEducation } from './screens/ScreenTimeEducation';
-import { Screen4Diagnosis } from './screens/Screen4Diagnosis';
 import { Screen5Impact } from './screens/Screen5Impact';
 import { ScreenRisksWarning } from './screens/ScreenRisksWarning';
 import { Screen6Goals } from './screens/Screen6Goals';
@@ -61,7 +60,7 @@ export default function App() {
   });
 
   const goToNextScreen = () => {
-    setCurrentScreen((prev) => Math.min(prev + 1, 28) as ScreenIndex);
+    setCurrentScreen((prev) => Math.min(prev + 1, 27) as ScreenIndex);
   };
 
   const goToPreviousScreen = () => {
@@ -180,13 +179,7 @@ export default function App() {
     goToNextScreen();
   };
 
-  // Step 20: Diagnóstico médico previo
-  const handleSelectPregunta4 = (options: string[]) => {
-    setRespuestas((prev) => ({ ...prev, pregunta4: options }));
-    goToNextScreen();
-  };
-
-  // Step 21: Impacto en vida diaria
+  // Step 20: Impacto en vida diaria
   const handleSelectPregunta5 = (option: string) => {
     setRespuestas((prev) => ({ ...prev, pregunta5: option }));
     goToNextScreen();
@@ -242,7 +235,7 @@ export default function App() {
       {/* Top Editorial Brand Bar matching reference image */}
       <header className="w-full max-w-[448px] mx-auto flex items-center justify-between pb-3 mb-2 border-b border-[#CBD5E1]">
         <div className="flex items-center gap-2">
-          {currentScreen > 0 && currentScreen < 27 && (
+          {currentScreen > 0 && currentScreen < 26 && (
             <button
               type="button"
               id="btn-back-screen"
@@ -281,7 +274,7 @@ export default function App() {
                 DolorCiao
               </span>
               <p className="text-[9px] uppercase tracking-[0.16em] font-semibold text-[#526677] mt-0.5">
-                Especialistas en Salud Lumbar
+                Movilidad y Bienestar para tu Espalda
               </p>
             </div>
           </div>
@@ -424,57 +417,52 @@ export default function App() {
               <ScreenWaterIntake onContinue={handleSelectConsumoAgua} />
             )}
 
-            {/* 20. Diagnóstico médico previo */}
+            {/* 20. Impacto en la vida diaria */}
             {currentScreen === 20 && (
-              <Screen4Diagnosis onSelectOption={handleSelectPregunta4} />
-            )}
-
-            {/* 21. Impacto en la vida diaria */}
-            {currentScreen === 21 && (
               <Screen5Impact onSelectOption={handleSelectPregunta5} />
             )}
 
-            {/* 22. Probabilidad de que el dolor se vuelva crónico (C.13) */}
-            {currentScreen === 22 && (
+            {/* 21. Prevención y riesgos */}
+            {currentScreen === 21 && (
               <ScreenRisksWarning onContinue={handleContinueRisks} />
             )}
 
-            {/* 23. Objetivos para los próximos 30 días */}
-            {currentScreen === 23 && (
+            {/* 22. Objetivos para los próximos 30 días */}
+            {currentScreen === 22 && (
               <Screen6Goals onContinue={handleSelectObjetivos30Dias} />
             )}
 
-            {/* 24. Resumen nivel de dolor / movilidad (D.14) */}
-            {currentScreen === 24 && (
+            {/* 23. Resumen nivel de rigidez / movilidad */}
+            {currentScreen === 23 && (
               <ScreenPainLevelSummary
                 respuestas={respuestas}
                 onContinue={handleContinueSummary}
               />
             )}
 
-            {/* 25. Transformación postural: No se trata solo de disminuir el dolor */}
-            {currentScreen === 25 && (
+            {/* 24. Transformación postural */}
+            {currentScreen === 24 && (
               <ScreenPostureTransformation onContinue={handleContinuePosture} />
             )}
 
-            {/* 26. Proyección de resultados en 21 días (D.15) */}
-            {currentScreen === 26 && (
+            {/* 25. Proyección de resultados en 21 días */}
+            {currentScreen === 25 && (
               <ScreenResultProjection
                 respuestas={respuestas}
                 onContinue={handleContinueProjection}
               />
             )}
 
-            {/* 27. Loader analizando respuestas (D.16) */}
-            {currentScreen === 27 && (
+            {/* 26. Loader analizando respuestas */}
+            {currentScreen === 26 && (
               <ScreenAnalyzingLoader
                 respuestas={respuestas}
                 onComplete={handleLoaderComplete}
               />
             )}
 
-            {/* 28. Etapa final unificada: Plan listo, Fases/Calendario, Testimonios, Bonuses, Oferta & Checkout */}
-            {currentScreen === 28 && (
+            {/* 27. Etapa final unificada: Plan listo, Fases/Calendario, Testimonios, Bonuses, Oferta & Checkout */}
+            {currentScreen === 27 && (
               <ScreenUnifiedFinalPlan
                 respuestas={respuestas}
                 onFinalAction={handleFinalCheckoutAction}
@@ -488,11 +476,11 @@ export default function App() {
       <footer className="w-full max-w-[448px] mx-auto pt-4 mt-2 flex items-center justify-between border-t border-[#1A1A1A]/10 text-[10px] uppercase tracking-[0.15em] text-[#1A1A1A]/40 font-medium">
         <span>&copy; DOLORCIAO</span>
         <div className="flex gap-3">
-          <span>Columna</span>
+          <span>Movilidad</span>
           <span>&bull;</span>
-          <span>Ciática</span>
+          <span>Postura</span>
           <span>&bull;</span>
-          <span>Hernia</span>
+          <span>Bienestar</span>
         </div>
       </footer>
     </main>

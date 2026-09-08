@@ -13,25 +13,25 @@ export const Screen3Intensity: React.FC<Screen3IntensityProps> = ({ onSelectOpti
   const options = [
     {
       id: 'opt-pain-mild',
-      label: 'Dolor leve',
+      label: 'Molestia leve',
       emoji: '😟',
       colorClass: 'bg-[#16A34A] text-white',
     },
     {
       id: 'opt-pain-moderate',
-      label: 'Dolor moderado',
+      label: 'Molestia moderada',
       emoji: '😣',
       colorClass: 'bg-[#FACC15] text-[#1A1A1A]',
     },
     {
       id: 'opt-pain-severe',
-      label: 'Dolor fuerte',
+      label: 'Molestia fuerte',
       emoji: '😖',
       colorClass: 'bg-[#F97316] text-white',
     },
     {
       id: 'opt-pain-extreme',
-      label: 'Dolor muy fuerte',
+      label: 'Molestia muy fuerte',
       emoji: '🤕',
       colorClass: 'bg-[#DC2626] text-white',
     },
@@ -48,11 +48,7 @@ export const Screen3Intensity: React.FC<Screen3IntensityProps> = ({ onSelectOpti
       {/* Screen Title & Reinforcement */}
       <div className="w-full">
         <ScreenHeading as="h2" id="q3-title">
-          ¿Qué tan fuerte es tu{' '}
-          <span className="bg-[#DC2626] text-white px-2 py-0.5 rounded-md inline-block">
-            dolor hoy
-          </span>
-          ?
+          ¿Qué tan intensa es tu molestia hoy?
         </ScreenHeading>
         <ReinforcementText>
           Ya casi terminamos…

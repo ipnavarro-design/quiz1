@@ -23,11 +23,11 @@ export const Screen0Hero: React.FC<Screen0HeroProps> = ({ onContinue }) => {
         <ScreenHeading as="h1" id="hero-title">
           DESCUBRE EN{' '}
           <span className="text-[#0E4A72]">1 MINUTO</span>
-          {' '}SI PUEDES{' '}
+          {' '}SI PODÉS{' '}
           <span className="bg-[#0E4A72] text-white px-2 py-0.5 rounded-md inline-block text-[20px]">
-            LIBERARTE DEL DOLOR
+            MEJORAR LA MOVILIDAD
           </span>
-          {' '}DE ESPALDA
+          {' '}DE TU ESPALDA
         </ScreenHeading>
 
         <p
@@ -35,16 +35,16 @@ export const Screen0Hero: React.FC<Screen0HeroProps> = ({ onContinue }) => {
           className="text-[17px] sm:text-[18px] font-normal text-[#1E293B] text-center tracking-tight"
           style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}
         >
-          Antes de que sea{' '}
-          <span className="text-[#DC2626] font-semibold">crónico</span>
+          Antes de que se vuelva una{' '}
+          <span className="text-[#DC2626] font-semibold">molestia habitual</span>
         </p>
 
-        {/* Badge 100% SIN CIRUGÍA */}
+        {/* Badge 100% sin equipamiento */}
         <div
           id="hero-surgery-free-badge"
           className="inline-block bg-[#36776F] text-white text-[13px] font-semibold px-3.5 py-1 rounded-full uppercase tracking-normal shadow-sm mt-0.5"
         >
-          100% SIN CIRUGÍA
+          100% sin equipamiento
         </div>
       </div>
 

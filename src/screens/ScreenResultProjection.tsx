@@ -36,7 +36,7 @@ export const ScreenResultProjection: React.FC<ScreenResultProjectionProps> = ({
         >
           {userName}, así se proyecta tu{' '}
           <span className="bg-[#0E4A72] text-white px-2 py-0.5 rounded-md inline-block">
-            alivio en 30 días
+            progreso en 30 días
           </span>
         </h2>
         <p className="text-[14px] text-neutral-500 max-w-sm mx-auto">
@@ -50,7 +50,7 @@ export const ScreenResultProjection: React.FC<ScreenResultProjectionProps> = ({
         <div className="grid grid-cols-2 gap-3">
           <div className="p-3 rounded-[14px] bg-red-50 border border-red-200/70 flex flex-col">
             <span className="text-[12px] font-bold text-red-700 uppercase tracking-wide">
-              Dolor Hoy
+              Rigidez Hoy
             </span>
             <span
               className="text-[26px] font-extrabold text-red-900 mt-0.5"
@@ -59,7 +59,7 @@ export const ScreenResultProjection: React.FC<ScreenResultProjectionProps> = ({
               8.5 / 10
             </span>
             <span className="text-[11.5px] text-red-600">
-              Inflamación y rigidez activa
+              Tensión y restricción activa
             </span>
           </div>
 
@@ -74,7 +74,7 @@ export const ScreenResultProjection: React.FC<ScreenResultProjectionProps> = ({
               1.0 / 10
             </span>
             <span className="text-[11.5px] text-emerald-700 font-medium">
-              Alivio y libertad de movimiento
+              Flexibilidad y bienestar
             </span>
           </div>
         </div>
@@ -83,7 +83,7 @@ export const ScreenResultProjection: React.FC<ScreenResultProjectionProps> = ({
         <div className="w-full flex flex-col gap-2 pt-2">
           <div className="flex justify-between text-[11px] sm:text-[12px] font-bold text-neutral-500">
             <span>Día 1 (Hoy)</span>
-            <span>Día 10 (Descompresión)</span>
+            <span>Día 10 (Activación)</span>
             <span>Día 20 (Movilidad)</span>
             <span>Día 30 (Meta)</span>
           </div>
@@ -134,9 +134,9 @@ export const ScreenResultProjection: React.FC<ScreenResultProjectionProps> = ({
           </div>
         </div>
 
-        {/* Clinical Note */}
+        {/* Note */}
         <p className="text-[13px] text-neutral-600 text-center leading-snug">
-          📉 La mayor reducción del dolor ocurre entre el <strong>día 4 y el día 12</strong>, cuando el tejido inflamatorio comienza a liberar las raíces nerviosas lumbares.
+          📉 El mayor cambio en la movilidad suele sentirse entre el <strong>día 4 y el día 12</strong>, a medida que los músculos y articulaciones liberan la tensión acumulada.
         </p>
       </div>
 
@@ -146,7 +146,7 @@ export const ScreenResultProjection: React.FC<ScreenResultProjectionProps> = ({
           id="btn-projection-continue"
           onClick={onContinue}
         >
-          Construir mi plan de alivio →
+          Ver mi plan personalizado de movilidad →
         </PrimaryButton>
       </div>
     </div>

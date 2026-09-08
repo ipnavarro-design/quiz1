@@ -61,7 +61,7 @@ export const ScreenWaterIntake: React.FC<ScreenWaterIntakeProps> = ({
           ¿Cuánta agua consumís al día?
         </ScreenHeading>
         <ReinforcementText>
-          La hidratación celular es el factor clave en la salud de las almohadillas intervertebrales.
+          La hidratación es clave para mantener la flexibilidad y elasticidad de tu cuerpo.
         </ReinforcementText>
       </div>
 
@@ -113,10 +113,10 @@ export const ScreenWaterIntake: React.FC<ScreenWaterIntakeProps> = ({
         <div className="w-full bg-[#F0FDF4] border border-[#16A34A]/30 rounded-[18px] p-4.5 flex flex-col gap-2.5 shadow-xs animate-in fade-in zoom-in-95 duration-200">
           <div className="flex items-center gap-2 text-[#16A34A] font-bold text-[14.5px]">
             <span className="text-[18px]">💧</span>
-            <span>¿Por qué el agua alivia tu columna?</span>
+            <span>¿Por qué el agua es clave para tu espalda?</span>
           </div>
           <p className="text-[13.5px] text-neutral-700 leading-relaxed">
-            Los discos intervertebrales están compuestos en un <strong className="text-[#1A1A1A]">80% por agua</strong>. Cuando estás deshidratado, los discos pierden grosor, se comprimen y aumenta el rozamiento entre vértebras, agravando hernias y pinzamientos ciáticos.
+            Los discos de tu columna están compuestos en su mayoría por agua. Mantenerte bien hidratado ayuda a que conserven su elasticidad y amortiguación, reduciendo la rigidez y protegiendo tu espalda en cada movimiento.
           </p>
         </div>
       )}

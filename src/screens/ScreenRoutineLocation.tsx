@@ -47,7 +47,7 @@ export const ScreenRoutineLocation: React.FC<ScreenRoutineLocationProps> = ({
           ¿Dónde prefieres realizar tus rutinas de movilidad?
         </ScreenHeading>
         <ReinforcementText>
-          No necesitas máquinas pesadas ni equipamiento especial para aliviar el dolor.
+          No necesitas máquinas pesadas ni equipamiento especial para mejorar tu movilidad y postura.
         </ReinforcementText>
       </div>
 

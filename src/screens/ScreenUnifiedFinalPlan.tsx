@@ -65,17 +65,17 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
     }
   };
 
-  // Compute dynamic user target pain area
+  // Compute dynamic user target area
   const getTargetPainArea = () => {
     if (respuestas.pregunta1) {
       const p1 = respuestas.pregunta1.toLowerCase();
       if (p1.includes('lumbar')) return 'tu zona lumbar y espalda baja';
       if (p1.includes('cervical')) return 'tu zona cervical y cuello';
-      if (p1.includes('pierna')) return 'el nervio ciático y piernas';
-      if (p1.includes('hormigueo')) return 'tu columna vertebral y raíces nerviosas';
+      if (p1.includes('pierna')) return 'tus piernas y caderas';
+      if (p1.includes('hormigueo')) return 'tu columna vertebral y postura';
       return respuestas.pregunta1;
     }
-    return 'tu zona lumbar y columna';
+    return 'tu zona lumbar y espalda';
   };
 
   const targetPainAreaText = getTargetPainArea();
@@ -83,24 +83,24 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
   // Section 1: Comparison table
   const comparisons = [
     {
-      metric: 'Intensidad del Dolor',
-      before: '8.5 / 10 (Dolor diario constante)',
-      after: '1.0 / 10 (Alivio y desinflamación)',
+      metric: 'Nivel de Tensión y Rigidez',
+      before: '8.5 / 10 (Molestia y rigidez diaria)',
+      after: '1.0 / 10 (Cuerpo ágil y libre de molestias)',
     },
     {
       metric: 'Movilidad de Columna',
-      before: 'Rigidez y punzadas al agacharte',
+      before: 'Rigidez y restricción al agacharte',
       after: 'Rango libre de movimiento',
     },
     {
       metric: 'Calidad de Sueño',
-      before: 'Despertares nocturnos por dolor',
+      before: 'Dificultad para descansar con comodidad',
       after: '7-8h de descanso continuo',
     },
     {
-      metric: 'Independencia Funcional',
-      before: 'Miedo al movimiento y a cargar peso',
-      after: 'Confianza en trabajo y vida diaria',
+      metric: 'Confianza Corporal',
+      before: 'Inseguridad al agacharte o moverte',
+      after: 'Confianza y soltura en tu día a día',
     },
   ];
 
@@ -114,7 +114,7 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
     { day: 6, emoji: '🌿', title: 'Cuello y Columna', focus: 'Descompresión cervical y eje', phase: 1 },
     { day: 7, emoji: '🔥', title: 'Full-Body B', focus: 'Control motor y descarga', phase: 1 },
     { day: 8, emoji: '🌱', title: 'Cadera y Flexores de Cadera', focus: 'Amplitud de movimiento profundo', phase: 1 },
-    { day: 9, emoji: '🧘', title: 'Espalda e Isquiotibiales', focus: 'Descompresión discal sostenida', phase: 1 },
+    { day: 9, emoji: '🧘', title: 'Espalda e Isquiotibiales', focus: 'Flexibilidad y descarga de espalda', phase: 1 },
     { day: 10, emoji: '🛡️', title: 'Tobillos y Glúteos', focus: 'Blindaje de la base pélvica', phase: 1 },
 
     { day: 11, emoji: '🎯', title: 'Full-Body A', focus: 'Fuerza postural y estabilidad', phase: 2 },
@@ -144,15 +144,15 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
     ? allCalendarDays
     : allCalendarDays.filter((d) => d.phase === selectedPhase);
 
-  // Section 3: Casos Clínicos Reales con imágenes reales y estrellas oscilantes
+  // Section 3: Historias y Casos Reales
   const testimonials = [
     {
       id: 'test-1',
       name: 'Dr. Roberto Méndez',
       age: '54 años',
-      condition: 'Crisis recurrentes de columna',
+      condition: 'Rigidez y molestia recurrente de espalda',
       quote:
-        'Pensé que por mi edad era normal vivir con dolor. Hace 4 meses que no tengo una sola crisis de espalda y puedo dormir como un bebe!!!',
+        'Pensé que por mi edad era normal vivir con rigidez. Hace meses que siento la espalda liviana y puedo descansar como un bebé.',
       rating: 5.0,
       image: '/images/testimonio-roberto.jpg',
     },
@@ -160,9 +160,9 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
       id: 'test-2',
       name: 'Mariana Gomez',
       age: '42 años',
-      condition: 'Rigidez lumbar por trabajo de escritorio',
+      condition: 'Tensión postural por trabajo de escritorio',
       quote:
-        'Sentarme a trabajar 8 horas era una tortura, intentaba crujirme mi espalda como si eso me "aliviara". Las microrutinas de descompresión me devolvieron la tranquilidad. Ya no amanezco rígida ni necesito inyecciones.',
+        'Sentarme a trabajar 8 horas me dejaba la espalda tiesa. Las microrutinas de movilidad me devolvieron la soltura. Ya no amanezco rígida y siento mi postura mucho más erguida.',
       rating: 4.5,
       image: '/images/testimonio-mariana.png',
     },
@@ -170,9 +170,9 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
       id: 'test-3',
       name: 'Gustavo Paez',
       age: '61 años',
-      condition: '3 años con dolor y ciática',
+      condition: 'Años con rigidez y falta de movilidad',
       quote:
-        'Llevaba 3 años tomando antiinflamatorios a diario y temía la operación. Con 20 minutos al día de estos movimientos, en la segunda semana el hormigueo en la pierna desapareció por completo. Volví a jugar con mis nietos sin miedo. Por cierto, la App muy intuitiva',
+        'Llevaba años sintiéndome limitado y pesado. Con solo 10-15 minutos al día de estos movimientos, en la segunda semana la pesadez en la pierna y espalda desapareció por completo. Volví a jugar con mis nietos con total libertad. Por cierto, la App es súper intuitiva.',
       rating: 5.0,
       image: '/images/testimonio-gustavo.webp',
     },
@@ -210,7 +210,7 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
         <p>
           Que el programa sea a través de nuestra App no determina si habrá resultados o no. Lo determinante es si existe un{' '}
           <strong className="font-bold text-white">plan claro, personalizado y medible</strong>, o si se trata de contenido genérico sin acompañamiento real. En{' '}
-          <strong className="font-bold text-white">DolorCiao</strong> no entrás a “ver videos sueltos”, sino a seguir un proceso paso a paso de 30 días, calibrado según tu contexto de dolor y evaluado con tests fotográficos y de cierre.
+          <strong className="font-bold text-white">DolorCiao</strong> no entrás a “ver videos sueltos”, sino a seguir un proceso paso a paso de 30 días, calibrado según tus objetivos de movilidad y evaluado con tests de progreso.
         </p>
       ),
     },
@@ -223,38 +223,37 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
       ),
     },
     {
-      q: 'Si ya probé kinesiología, masajes o inyecciones, ¿por qué DolorCiao funcionará?',
+      q: 'Si ya probé masajes o soluciones temporales, ¿por qué DolorCiao funcionará?',
       a: (
         <div className="space-y-3">
           <p>
-            Muchos métodos habituales (calor, ultrasonido, fármacos, masajes o bloqueos) buscan únicamente{' '}
-            <strong className="font-bold text-white">apagar el dolor momentáneamente</strong>, pero no solucionan la falta de movilidad en la cadera ni descomprimen las vértebras. Al volver a la rutina diaria, la molestia reaparece.
+            Muchos métodos tradicionales solo buscan una sensación de alivio momentáneo, pero no entrenan la movilidad de la cadera ni la flexibilidad de la columna. Al volver a pasar horas sentado, la tensión reaparece.
           </p>
           <p>
-            <strong className="font-bold text-white">DolorCiao</strong> restaura la mecánica articular de raíz a través de micro-movimientos de descompresión y un sistema de hábitos de 24 horas, logrando un alivio duradero que no depende de fármacos ni de sesiones eternas.
+            <strong className="font-bold text-white">DolorCiao</strong> trabaja la causa real: reeduca el movimiento articular a través de micro-rutinas diarias y hábitos saludables, logrando un bienestar duradero y una postura erguida natural.
           </p>
         </div>
       ),
     },
     {
-      q: '¿Qué pasa si en 30 días no siento alivio ni resultados?',
+      q: '¿Qué pasa si en 30 días no veo resultados?',
       a: (
         <div className="space-y-2">
           <p>
             Tenés una <strong className="font-bold text-white">Garantía Incondicional de 30 Días</strong> respaldada al 100%.
           </p>
           <p>
-            Si en los 30 días no ves una mejoría real en tu movilidad y disminución de dolor, nos escribís un mensaje y te{' '}
+            Si en los 30 días no ves una mejoría real en tu movilidad y bienestar, nos escribís un mensaje y te{' '}
             <strong className="font-bold text-white">reembolsamos el 100% de tus $7.797 ARS de inmediato</strong>, sin preguntas incómodas ni trámites.
           </p>
         </div>
       ),
     },
     {
-      q: '¿Es seguro si tengo hernia de disco (L4-L5, L5-S1) o ciática?',
+      q: '¿Es seguro si suelo tener mucha rigidez o molestias en la espalda?',
       a: (
         <p>
-          Sí, el método fue creado teniendo como eje central a personas con protusiones discales, pinzamientos de ciática y lumbalgia mecánica. Todos los ejercicios son de bajo impacto y cero carga axial, protegiendo tus discos intervertebrales en todo momento.
+          Sí, el programa está diseñado especialmente para personas que experimentan rigidez, sobrecarga lumbar o pesadez por pasar mucho tiempo sentadas. Todos los movimientos son de bajo impacto, progresivos y sin cargas pesadas, protegiendo tus articulaciones en todo momento.
         </p>
       ),
     },
@@ -355,7 +354,7 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
       <section className="w-full flex flex-col gap-6">
         <div className="w-full text-center space-y-2">
           <div className="inline-block bg-[#EDF4F9] text-[#0E4A72] border border-[#CBD5E1] text-[12.5px] font-bold px-3.5 py-1 rounded-full">
-            Metodología Científica de 3 Fases (30 Días)
+            Metodología Progresiva de 3 Fases (30 Días)
           </div>
           <h2
             id="calendar-title"
@@ -424,17 +423,17 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
           <div className="flex flex-col">
             <span className="font-bold text-[#0E4A72] text-[14px]">
               {selectedPhase === 1
-                ? 'Fase 1: Descompresión y Adaptación Funcional (Días 1 al 10)'
+                ? 'Fase 1: Activación y Adaptación Funcional (Días 1 al 10)'
                 : selectedPhase === 2
                 ? 'Fase 2: Rango Articular y Cadena Posterior (Días 11 al 20)'
-                : 'Fase 3: Blindaje Lumbar, Fuerza y Test de Cierre (Días 21 al 30)'}
+                : 'Fase 3: Fortalecimiento Postural, Movilidad y Test de Cierre (Días 21 al 30)'}
             </span>
             <span className="text-[12.5px] text-slate-600 mt-0.5 leading-snug">
               {selectedPhase === 1
-                ? 'Desinflama las raíces nerviosas y libera la compresión discal con apertura de cadera y movilidad suave.'
+                ? 'Libera la tensión acumulada y mejora la movilidad con apertura de cadera y movimientos suaves.'
                 : selectedPhase === 2
-                ? 'Recupera la movilidad de columna, isquiotibiales y hombros, desbloqueando el rango sin dolor.'
-                : 'Activa la faja protectora abdominal y culmina en el Día 30 con tu Test de Cierre para validar tu cambio.'}
+                ? 'Recupera la movilidad de columna, piernas y hombros, ampliando tu rango con total comodidad.'
+                : 'Fortalece tu postura y zona media, culminando en el Día 30 con tu Test de Cierre para validar tu progreso.'}
             </span>
           </div>
         </div>
@@ -492,18 +491,18 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
       <section className="w-full flex flex-col gap-5">
         <div className="w-full text-center space-y-1.5">
           <div className="inline-block bg-[#EDF4F9] text-[#0E4A72] border border-[#CBD5E1] text-[12px] font-bold px-3 py-0.5 rounded-full">
-            Casos Clínicos Reales
+            Historias y Casos Reales
           </div>
           <h3
             id="testimonials-title"
             className="text-[21px] sm:text-[25px] font-bold text-[#1E293B] leading-tight"
             style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}
           >
-            Personas que ya dijeron adiós a su dolor con{' '}
+            Personas que ya transformaron su bienestar con{' '}
             <span className="text-[#0E4A72] font-extrabold">DolorCiao</span>
           </h3>
           <p className="text-[13px] text-slate-500 max-w-sm mx-auto">
-            Historias comprobadas de pacientes con hernias, ciática y contracturas crónicas:
+            Historias reales de personas que recuperaron su flexibilidad y postura diaria:
           </p>
         </div>
 

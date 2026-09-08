@@ -53,7 +53,7 @@ export const ScreenActivityLevel: React.FC<ScreenActivityLevelProps> = ({
           ¿Cuál es tu nivel de actividad física en la semana?
         </ScreenHeading>
         <ReinforcementText>
-          Esto nos ayuda a calibrar la intensidad de las micro-rutinas sin sobrecargar tu columna.
+          Esto nos ayuda a calibrar la intensidad de las micro-rutinas para que sean cómodas para vos.
         </ReinforcementText>
       </div>
 
