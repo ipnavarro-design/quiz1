@@ -530,7 +530,7 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
                 {renderStars(t.rating)}
               </div>
               <div className="inline-block bg-slate-100 text-[#0E4A72] text-[11.5px] font-bold px-2.5 py-0.5 rounded-md self-start border border-slate-200">
-                Condición: {t.condition}
+                {t.condition}
               </div>
               <p className="text-[13px] text-slate-700 leading-relaxed italic bg-slate-50 p-3 rounded-[12px] border border-slate-200/60">
                 "{t.quote}"
