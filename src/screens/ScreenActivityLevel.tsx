@@ -17,25 +17,21 @@ export const ScreenActivityLevel: React.FC<ScreenActivityLevelProps> = ({
       id: 'opt-act-sedentary',
       emoji: '🛋️',
       title: 'Sedentario',
-      desc: 'Paso la mayor parte del día sentado o con muy poco movimiento.',
     },
     {
       id: 'opt-act-light',
       emoji: '🚶',
       title: 'Ligeramente activo',
-      desc: 'Caminatas suaves, tareas cotidianas o estiramientos ocasionales.',
     },
     {
       id: 'opt-act-moderate',
       emoji: '🏃',
       title: 'Moderadamente activo',
-      desc: 'Movimiento o actividad física 3 a 4 veces por semana.',
     },
     {
       id: 'opt-act-high',
       emoji: '⚡',
       title: 'Muy activo',
-      desc: 'Entrenamiento o trabajo físico regular de 5 o más días por semana.',
     },
   ];
 
@@ -43,8 +39,8 @@ export const ScreenActivityLevel: React.FC<ScreenActivityLevelProps> = ({
     <div className="w-full flex flex-col gap-6">
       {/* Header section with percentage & progress bar */}
       <div className="w-full">
-        <Eyebrow percentage={40} />
-        <ProgressBar progress={40} />
+        <Eyebrow percentage={83} phase="Personalización" />
+        <ProgressBar progress={83} />
       </div>
 
       {/* Screen Title */}
@@ -73,9 +69,6 @@ export const ScreenActivityLevel: React.FC<ScreenActivityLevelProps> = ({
             <div className="flex flex-col text-left">
               <span className="font-semibold text-[#1A1A1A] text-[16px] leading-snug">
                 {opt.title}
-              </span>
-              <span className="text-[13px] text-neutral-500 font-normal mt-0.5">
-                {opt.desc}
               </span>
             </div>
           </OptionCard>

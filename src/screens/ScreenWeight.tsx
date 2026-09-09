@@ -28,8 +28,8 @@ export const ScreenWeight: React.FC<ScreenWeightProps> = ({
     <div className="w-full flex flex-col gap-6">
       {/* Header section with percentage & progress bar */}
       <div className="w-full">
-        <Eyebrow percentage={20} />
-        <ProgressBar progress={20} />
+        <Eyebrow percentage={80} phase="Personalización" />
+        <ProgressBar progress={80} />
       </div>
 
       {/* Screen Title */}

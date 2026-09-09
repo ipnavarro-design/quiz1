@@ -20,7 +20,7 @@ export const ScreenResultProjection: React.FC<ScreenResultProjectionProps> = ({
     <div className="w-full flex flex-col gap-6">
       {/* Header section with 100% progress */}
       <div className="w-full">
-        <Eyebrow percentage={100} line1="Análisis completado con éxito" />
+        <Eyebrow percentage={100} phase="Tu Plan" line1="Análisis completado con éxito" />
         <ProgressBar progress={100} />
       </div>
 

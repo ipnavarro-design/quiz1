@@ -6,25 +6,25 @@ import { Screen0Gender } from './screens/Screen0Gender';
 import { Screen0Age } from './screens/Screen0Age';
 import { ScreenKnowsMobility } from './screens/ScreenKnowsMobility';
 import { ScreenMobilityInfo } from './screens/ScreenMobilityInfo';
-import { ScreenHeight } from './screens/ScreenHeight';
-import { ScreenWeight } from './screens/ScreenWeight';
-import { ScreenName } from './screens/ScreenName';
-import { ScreenPreviousMethods } from './screens/ScreenPreviousMethods';
 import { Screen1Location } from './screens/Screen1Location';
 import { ScreenMovementJoints } from './screens/ScreenMovementJoints';
 import { ScreenWeeklyPainDays } from './screens/ScreenWeeklyPainDays';
+import { Screen5Impact } from './screens/Screen5Impact';
+import { ScreenSocialProofIntermedia } from './screens/ScreenSocialProofIntermedia';
+import { ScreenPreviousMethods } from './screens/ScreenPreviousMethods';
+import { ScreenName } from './screens/ScreenName';
+import { ScreenHeight } from './screens/ScreenHeight';
+import { ScreenWeight } from './screens/ScreenWeight';
 import { ScreenActivityLevel } from './screens/ScreenActivityLevel';
 import { ScreenRoutineLocation } from './screens/ScreenRoutineLocation';
 import { Screen2Duration } from './screens/Screen2Duration';
 import { Screen3Intensity } from './screens/Screen3Intensity';
 import { ScreenRoutineDuration } from './screens/ScreenRoutineDuration';
+import { ScreenTimeEducation } from './screens/ScreenTimeEducation';
 import { ScreenSleepImpact } from './screens/ScreenSleepImpact';
 import { ScreenWaterIntake } from './screens/ScreenWaterIntake';
-import { ScreenTimeEducation } from './screens/ScreenTimeEducation';
-import { Screen5Impact } from './screens/Screen5Impact';
 import { ScreenRisksWarning } from './screens/ScreenRisksWarning';
 import { Screen6Goals } from './screens/Screen6Goals';
-import { ScreenPainLevelSummary } from './screens/ScreenPainLevelSummary';
 import { ScreenPostureTransformation } from './screens/ScreenPostureTransformation';
 import { ScreenResultProjection } from './screens/ScreenResultProjection';
 import { ScreenAnalyzingLoader } from './screens/ScreenAnalyzingLoader';
@@ -60,11 +60,18 @@ export default function App() {
   });
 
   const goToNextScreen = () => {
-    setCurrentScreen((prev) => Math.min(prev + 1, 27) as ScreenIndex);
+    setCurrentScreen((prev) => Math.min(prev + 1, 28) as ScreenIndex);
   };
 
   const goToPreviousScreen = () => {
-    setCurrentScreen((prev) => Math.max(prev - 1, 0) as ScreenIndex);
+    setCurrentScreen((prev) => {
+      if (prev === 25) return 23;
+      return Math.max(prev - 1, 0) as ScreenIndex;
+    });
+  };
+
+  const handleContinueSocialProof = () => {
+    goToNextScreen();
   };
 
   // Step 1: Género
@@ -193,12 +200,7 @@ export default function App() {
   // Step 23: Objetivos para los próximos 30 días
   const handleSelectObjetivos30Dias = (goals: string[]) => {
     setRespuestas((prev) => ({ ...prev, objetivos30Dias: goals }));
-    goToNextScreen();
-  };
-
-  // Step 24: Resumen nivel de dolor
-  const handleContinueSummary = () => {
-    goToNextScreen();
+    setCurrentScreen(25);
   };
 
   // Step 25: Transformación postural (¡No se trata solo de disminuir el dolor!)
@@ -235,7 +237,7 @@ export default function App() {
       {/* Top Editorial Brand Bar matching reference image */}
       <header className="w-full max-w-[448px] mx-auto flex items-center justify-between pb-3 mb-2 border-b border-[#CBD5E1]">
         <div className="flex items-center gap-2">
-          {currentScreen > 0 && currentScreen < 26 && (
+          {currentScreen > 0 && currentScreen < 27 && (
             <button
               type="button"
               id="btn-back-screen"
@@ -329,42 +331,13 @@ export default function App() {
               <ScreenMobilityInfo onContinue={handleContinueMobilityInfo} />
             )}
 
-            {/* 5. Altura (A.1) */}
+            {/* 5. Localización del dolor */}
             {currentScreen === 5 && (
-              <ScreenHeight
-                defaultHeight={respuestas.altura}
-                onContinue={handleSelectHeight}
-              />
-            )}
-
-            {/* 6. Peso actual (A.2) */}
-            {currentScreen === 6 && (
-              <ScreenWeight
-                defaultWeight={respuestas.peso}
-                onContinue={handleSelectWeight}
-              />
-            )}
-
-            {/* 7. Nombre (A.3) */}
-            {currentScreen === 7 && (
-              <ScreenName
-                defaultName={respuestas.nombre}
-                onContinue={handleSelectName}
-              />
-            )}
-
-            {/* 8. Métodos intentados sin resultados */}
-            {currentScreen === 8 && (
-              <ScreenPreviousMethods onContinue={handleSelectMetodosPrevios} />
-            )}
-
-            {/* 9. Localización del dolor */}
-            {currentScreen === 9 && (
               <Screen1Location onSelectOption={handleSelectPregunta1} />
             )}
 
-            {/* 10. Zonas de dolor al realizar movimientos (Adaptación y protección) */}
-            {currentScreen === 10 && (
+            {/* 6. Zonas de dolor al realizar movimientos (Adaptación y protección) */}
+            {currentScreen === 6 && (
               <ScreenMovementJoints
                 dolorPrevio={respuestas.pregunta1}
                 initialSelected={respuestas.zonasDolorMovimiento}
@@ -372,97 +345,129 @@ export default function App() {
               />
             )}
 
-            {/* 11. Días con dolor en la última semana */}
-            {currentScreen === 11 && (
+            {/* 7. Días con dolor en la última semana */}
+            {currentScreen === 7 && (
               <ScreenWeeklyPainDays onSelectOption={handleSelectDiasDolorSemana} />
             )}
 
-            {/* 12. Nivel de actividad física (B.4) */}
-            {currentScreen === 12 && (
-              <ScreenActivityLevel onSelectOption={handleSelectNivelActividad} />
-            )}
-
-            {/* 13. Lugar preferido para rutinas (B.5) */}
-            {currentScreen === 13 && (
-              <ScreenRoutineLocation onSelectOption={handleSelectLugarRutinas} />
-            )}
-
-            {/* 14. Tiempo con el dolor */}
-            {currentScreen === 14 && (
-              <Screen2Duration onSelectOption={handleSelectPregunta2} />
-            )}
-
-            {/* 15. Intensidad del dolor */}
-            {currentScreen === 15 && (
-              <Screen3Intensity onSelectOption={handleSelectPregunta3} />
-            )}
-
-            {/* 16. Duración deseada de rutinas (B.7) */}
-            {currentScreen === 16 && (
-              <ScreenRoutineDuration onSelectOption={handleSelectDuracionRutinas} />
-            )}
-
-            {/* 17. Educación tiempo: 10-15 min al día (C.12) */}
-            {currentScreen === 17 && (
-              <ScreenTimeEducation onContinue={handleContinueTimeEdu} />
-            )}
-
-            {/* 18. Horas de sueño y descanso (B.8) */}
-            {currentScreen === 18 && (
-              <ScreenSleepImpact onContinue={handleSelectHorasSueno} />
-            )}
-
-            {/* 19. Consumo de agua diario + Info discos (B.9 + C.11) */}
-            {currentScreen === 19 && (
-              <ScreenWaterIntake onContinue={handleSelectConsumoAgua} />
-            )}
-
-            {/* 20. Impacto en la vida diaria */}
-            {currentScreen === 20 && (
+            {/* 8. Impacto en la vida diaria */}
+            {currentScreen === 8 && (
               <Screen5Impact onSelectOption={handleSelectPregunta5} />
             )}
 
-            {/* 21. Prevención y riesgos */}
-            {currentScreen === 21 && (
-              <ScreenRisksWarning onContinue={handleContinueRisks} />
-            )}
-
-            {/* 22. Objetivos para los próximos 30 días */}
-            {currentScreen === 22 && (
-              <Screen6Goals onContinue={handleSelectObjetivos30Dias} />
-            )}
-
-            {/* 23. Resumen nivel de rigidez / movilidad */}
-            {currentScreen === 23 && (
-              <ScreenPainLevelSummary
-                respuestas={respuestas}
-                onContinue={handleContinueSummary}
+            {/* 9. Refuerzo / Prueba Social Intermedia */}
+            {currentScreen === 9 && (
+              <ScreenSocialProofIntermedia
+                genero={respuestas.genero}
+                onContinue={handleContinueSocialProof}
               />
             )}
 
-            {/* 24. Transformación postural */}
-            {currentScreen === 24 && (
+            {/* 10. Métodos intentados sin resultados */}
+            {currentScreen === 10 && (
+              <ScreenPreviousMethods onContinue={handleSelectMetodosPrevios} />
+            )}
+
+            {/* 11. Nombre */}
+            {currentScreen === 11 && (
+              <ScreenName
+                defaultName={respuestas.nombre}
+                onContinue={handleSelectName}
+              />
+            )}
+
+            {/* 12. Altura */}
+            {currentScreen === 12 && (
+              <ScreenHeight
+                defaultHeight={respuestas.altura}
+                onContinue={handleSelectHeight}
+              />
+            )}
+
+            {/* 13. Peso actual */}
+            {currentScreen === 13 && (
+              <ScreenWeight
+                defaultWeight={respuestas.peso}
+                onContinue={handleSelectWeight}
+              />
+            )}
+
+            {/* 14. Nivel de actividad física */}
+            {currentScreen === 14 && (
+              <ScreenActivityLevel onSelectOption={handleSelectNivelActividad} />
+            )}
+
+            {/* 15. Lugar preferido para rutinas */}
+            {currentScreen === 15 && (
+              <ScreenRoutineLocation onSelectOption={handleSelectLugarRutinas} />
+            )}
+
+            {/* 16. Tiempo con el dolor */}
+            {currentScreen === 16 && (
+              <Screen2Duration onSelectOption={handleSelectPregunta2} />
+            )}
+
+            {/* 17. Intensidad del dolor */}
+            {currentScreen === 17 && (
+              <Screen3Intensity onSelectOption={handleSelectPregunta3} />
+            )}
+
+            {/* 18. Duración deseada de rutinas */}
+            {currentScreen === 18 && (
+              <ScreenRoutineDuration onSelectOption={handleSelectDuracionRutinas} />
+            )}
+
+            {/* 19. Educación tiempo: 10-15 min al día */}
+            {currentScreen === 19 && (
+              <ScreenTimeEducation onContinue={handleContinueTimeEdu} />
+            )}
+
+            {/* 20. Horas de sueño y descanso */}
+            {currentScreen === 20 && (
+              <ScreenSleepImpact onContinue={handleSelectHorasSueno} />
+            )}
+
+            {/* 21. Consumo de agua diario + Info discos */}
+            {currentScreen === 21 && (
+              <ScreenWaterIntake onContinue={handleSelectConsumoAgua} />
+            )}
+
+            {/* 22. Prevención y riesgos */}
+            {currentScreen === 22 && (
+              <ScreenRisksWarning
+                onContinue={handleContinueRisks}
+                respuestas={respuestas}
+              />
+            )}
+
+            {/* 23. Objetivos para los próximos 30 días */}
+            {currentScreen === 23 && (
+              <Screen6Goals onContinue={handleSelectObjetivos30Dias} />
+            )}
+
+            {/* 25. Transformación postural */}
+            {currentScreen === 25 && (
               <ScreenPostureTransformation onContinue={handleContinuePosture} />
             )}
 
-            {/* 25. Proyección de resultados en 21 días */}
-            {currentScreen === 25 && (
+            {/* 26. Proyección de resultados en 21 días */}
+            {currentScreen === 26 && (
               <ScreenResultProjection
                 respuestas={respuestas}
                 onContinue={handleContinueProjection}
               />
             )}
 
-            {/* 26. Loader analizando respuestas */}
-            {currentScreen === 26 && (
+            {/* 27. Loader analizando respuestas */}
+            {currentScreen === 27 && (
               <ScreenAnalyzingLoader
                 respuestas={respuestas}
                 onComplete={handleLoaderComplete}
               />
             )}
 
-            {/* 27. Etapa final unificada: Plan listo, Fases/Calendario, Testimonios, Bonuses, Oferta & Checkout */}
-            {currentScreen === 27 && (
+            {/* 28. Etapa final unificada: Plan listo, Fases/Calendario, Testimonios, Bonuses, Oferta & Checkout */}
+            {currentScreen === 28 && (
               <ScreenUnifiedFinalPlan
                 respuestas={respuestas}
                 onFinalAction={handleFinalCheckoutAction}

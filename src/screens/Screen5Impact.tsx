@@ -55,8 +55,8 @@ export const Screen5Impact: React.FC<Screen5ImpactProps> = ({ onSelectOption }) 
     <div className="w-full flex flex-col gap-6">
       {/* Header section */}
       <div className="w-full">
-        <Eyebrow percentage={80} />
-        <ProgressBar progress={80} />
+        <Eyebrow percentage={64} phase="Evaluación" />
+        <ProgressBar progress={64} />
       </div>
 
       {/* Screen Title & Reinforcement */}
@@ -65,7 +65,7 @@ export const Screen5Impact: React.FC<Screen5ImpactProps> = ({ onSelectOption }) 
           ¿Cómo afecta esta molestia tu vida cotidiana?
         </ScreenHeading>
         <ReinforcementText>
-          Ya falta poco para terminar.
+          Comprender tu día a día nos permite diseñar un alivio específico para tu rutina.
         </ReinforcementText>
       </div>
 

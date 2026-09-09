@@ -14,8 +14,8 @@ export const ScreenTimeEducation: React.FC<ScreenTimeEducationProps> = ({
     <div className="w-full flex flex-col gap-6">
       {/* Header section with percentage & progress bar */}
       <div className="w-full">
-        <Eyebrow percentage={64} />
-        <ProgressBar progress={64} />
+        <Eyebrow percentage={92} phase="Personalización" />
+        <ProgressBar progress={92} />
       </div>
 
       {/* Screen Title & Reassurance */}
@@ -35,53 +35,8 @@ export const ScreenTimeEducation: React.FC<ScreenTimeEducationProps> = ({
           al día
         </h2>
         <p className="text-[14px] text-neutral-600 max-w-md mx-auto">
-          No necesitas sesiones agotadoras de gimnasio ni pasar horas con máquinas. La clave para sentirte mejor de forma duradera son las micro-rutinas de movilidad guiada.
+          Micro-rutinas guiadas y consistentes para sentirte ágil sin agotar tus tiempos libres.
         </p>
-      </div>
-
-      {/* 3 Steps Visual Breakdown */}
-      <div className="w-full bg-white border border-[#1A1A1A]/15 rounded-[20px] p-5 flex flex-col gap-4 shadow-xs">
-        <div className="flex items-start gap-3.5 pb-3 border-b border-neutral-100">
-          <div className="w-9 h-9 rounded-full bg-emerald-50 text-emerald-700 font-bold flex items-center justify-center text-[14px] shrink-0 border border-emerald-200">
-            5m
-          </div>
-          <div className="flex flex-col">
-            <span className="font-semibold text-[#1A1A1A] text-[15px]">
-              Movilidad lumbar
-            </span>
-            <span className="text-[13px] text-neutral-500">
-              Genera más soltura y libertad de movimiento en la zona baja de la espalda.
-            </span>
-          </div>
-        </div>
-
-        <div className="flex items-start gap-3.5 pb-3 border-b border-neutral-100">
-          <div className="w-9 h-9 rounded-full bg-blue-50 text-blue-700 font-bold flex items-center justify-center text-[14px] shrink-0 border border-blue-200">
-            5m
-          </div>
-          <div className="flex flex-col">
-            <span className="font-semibold text-[#1A1A1A] text-[15px]">
-              Estiramiento y flexibilidad
-            </span>
-            <span className="text-[13px] text-neutral-500">
-              Libera tensión profunda en glúteos y cadera.
-            </span>
-          </div>
-        </div>
-
-        <div className="flex items-start gap-3.5">
-          <div className="w-9 h-9 rounded-full bg-purple-50 text-purple-700 font-bold flex items-center justify-center text-[14px] shrink-0 border border-purple-200">
-            5m
-          </div>
-          <div className="flex flex-col">
-            <span className="font-semibold text-[#1A1A1A] text-[15px]">
-              Activación del core
-            </span>
-            <span className="text-[13px] text-neutral-500">
-              Fortalece tu zona media para sostener mejor tu postura todo el día.
-            </span>
-          </div>
-        </div>
       </div>
 
       {/* Continue Button */}

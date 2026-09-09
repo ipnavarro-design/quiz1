@@ -3,7 +3,14 @@ import { Eyebrow } from '../components/Eyebrow';
 import { ProgressBar } from '../components/ProgressBar';
 import { ScreenHeading } from '../components/ScreenHeading';
 import { OptionCard } from '../components/OptionCard';
-import { LumbarIcon, CervicalIcon, SciaticLegIcon, TinglingSpineIcon } from '../components/Icons';
+import {
+  LumbarIcon,
+  CervicalIcon,
+  DorsalIcon,
+  SciaticLegIcon,
+  TinglingSpineIcon,
+  FullBackIcon,
+} from '../components/Icons';
 
 interface Screen1LocationProps {
   onSelectOption: (option: string) => void;
@@ -22,9 +29,24 @@ export const Screen1Location: React.FC<Screen1LocationProps> = ({ onSelectOption
       icon: <CervicalIcon />,
     },
     {
+      id: 'opt-dorsal',
+      label: 'Dorsal (Espalda media)',
+      icon: <DorsalIcon />,
+    },
+    {
       id: 'opt-pierna',
       label: 'Molestia que se extiende hacia la pierna',
       icon: <SciaticLegIcon />,
+    },
+    {
+      id: 'opt-hormigueo',
+      label: 'Hormigueo o entumecimiento',
+      icon: <TinglingSpineIcon />,
+    },
+    {
+      id: 'opt-toda-espalda',
+      label: 'Toda la espalda',
+      icon: <FullBackIcon />,
     },
   ];
 
@@ -32,8 +54,8 @@ export const Screen1Location: React.FC<Screen1LocationProps> = ({ onSelectOption
     <div className="w-full flex flex-col gap-6">
       {/* Header section with percentage & progress bar */}
       <div className="w-full">
-        <Eyebrow percentage={32} />
-        <ProgressBar progress={32} />
+        <Eyebrow percentage={46} phase="Evaluación" />
+        <ProgressBar progress={46} />
       </div>
 
       {/* Screen Title */}

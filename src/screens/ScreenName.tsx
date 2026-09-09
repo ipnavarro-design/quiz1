@@ -38,8 +38,8 @@ export const ScreenName: React.FC<ScreenNameProps> = ({
     <div className="w-full flex flex-col gap-6">
       {/* Header section with percentage & progress bar */}
       <div className="w-full">
-        <Eyebrow percentage={24} />
-        <ProgressBar progress={24} />
+        <Eyebrow percentage={74} phase="Personalización" />
+        <ProgressBar progress={74} />
       </div>
 
       {/* Screen Title & Reinforcement */}
@@ -48,7 +48,7 @@ export const ScreenName: React.FC<ScreenNameProps> = ({
           Personalización de tu programa
         </div>
         <ScreenHeading as="h2" id="q-name-title">
-          Tu plan para mejorar la movilidad de tu espalda está a punto de comenzar. ¿Cómo te llamás?
+          Tu plan para aliviar la molestia de tu espalda está a punto de comenzar. ¿Cómo te llamás?
         </ScreenHeading>
         <p className="text-[14px] text-neutral-500 max-w-sm mt-1">
           Queremos dirigirnos a vos con nombre propio en cada fase de tu programa.

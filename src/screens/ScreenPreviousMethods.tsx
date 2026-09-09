@@ -90,10 +90,10 @@ export const ScreenPreviousMethods: React.FC<ScreenPreviousMethodsProps> = ({ on
 
   return (
     <div className="w-full flex flex-col gap-6">
-      {/* Header with 28% progress */}
+      {/* Header with 70% progress */}
       <div className="w-full">
-        <Eyebrow percentage={28} />
-        <ProgressBar progress={28} />
+        <Eyebrow percentage={70} phase="Evaluación" />
+        <ProgressBar progress={70} />
       </div>
 
       {/* Screen Title & Subtitle */}

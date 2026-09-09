@@ -25,8 +25,8 @@ export const ScreenPostureTransformation: React.FC<ScreenPostureTransformationPr
     <div className="w-full flex flex-col gap-6">
       {/* Header section with progress */}
       <div className="w-full">
-        <Eyebrow percentage={96} line1="Transformación Postural" />
-        <ProgressBar progress={96} />
+        <Eyebrow percentage={99} phase="Tu Plan" line1="Transformación Postural" />
+        <ProgressBar progress={99} />
       </div>
 
       {/* Screen Title */}

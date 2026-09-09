@@ -41,8 +41,8 @@ export const Screen3Intensity: React.FC<Screen3IntensityProps> = ({ onSelectOpti
     <div className="w-full flex flex-col gap-6">
       {/* Header section */}
       <div className="w-full">
-        <Eyebrow percentage={56} />
-        <ProgressBar progress={56} />
+        <Eyebrow percentage={89} phase="Personalización" />
+        <ProgressBar progress={89} />
       </div>
 
       {/* Screen Title & Reinforcement */}

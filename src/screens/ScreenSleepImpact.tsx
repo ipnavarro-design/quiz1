@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Eyebrow } from '../components/Eyebrow';
 import { ProgressBar } from '../components/ProgressBar';
 import { ScreenHeading } from '../components/ScreenHeading';
-import { ReinforcementText } from '../components/ReinforcementText';
-import { PrimaryButton } from '../components/PrimaryButton';
 
 interface ScreenSleepImpactProps {
   onContinue: (option: string) => void;
@@ -13,52 +11,43 @@ export const ScreenSleepImpact: React.FC<ScreenSleepImpactProps> = ({
   onContinue,
 }) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const [showInsight, setShowInsight] = useState(false);
 
   const options = [
     {
       id: 'opt-sleep-low',
       emoji: '🌙',
       title: 'Menos de 5 horas',
-      desc: 'La molestia en la zona lumbar me despierta repetidamente de noche.',
     },
     {
       id: 'opt-sleep-med',
       emoji: '🛏️',
       title: '5 a 6 horas con interrupciones',
-      desc: 'Me cuesta encontrar una postura cómoda y amanezco con rigidez.',
     },
     {
       id: 'opt-sleep-good',
       emoji: '😴',
       title: '7 a 8 horas de descanso regular',
-      desc: 'Duermo relativamente bien, aunque siento tensión en la espalda al levantarme.',
     },
     {
       id: 'opt-sleep-high',
       emoji: '✨',
       title: 'Más de 8 horas',
-      desc: 'Tengo buen descanso, busco prevenir molestias y mejorar mi postura matutina.',
     },
   ];
 
   const handleSelect = (title: string) => {
     setSelectedOption(title);
-    setShowInsight(true);
-  };
-
-  const handleFinalContinue = () => {
-    if (selectedOption) {
-      onContinue(selectedOption);
-    }
+    setTimeout(() => {
+      onContinue(title);
+    }, 250);
   };
 
   return (
     <div className="w-full flex flex-col gap-6">
       {/* Header section with percentage & progress bar */}
       <div className="w-full">
-        <Eyebrow percentage={68} />
-        <ProgressBar progress={68} />
+        <Eyebrow percentage={94} phase="Personalización" />
+        <ProgressBar progress={94} />
       </div>
 
       {/* Screen Title */}
@@ -70,12 +59,22 @@ export const ScreenSleepImpact: React.FC<ScreenSleepImpactProps> = ({
           </span>{' '}
           tu descanso?
         </ScreenHeading>
-        <ReinforcementText>
-          Durante el sueño profundo tu cuerpo aprovecha para recuperarse y relajar la musculatura.
-        </ReinforcementText>
       </div>
 
-      {/* Option Cards */}
+      {/* Educational Insight Card for Sleep (trimmed to 1 short sentence) */}
+      <div className="w-full bg-[#F0FDF4] border border-[#16A34A]/30 rounded-[16px] p-3.5 flex items-center gap-2.5 shadow-2xs">
+        <span className="text-[20px] shrink-0">🌙</span>
+        <div className="flex flex-col gap-0.5 text-left">
+          <strong className="text-[#16A34A] font-bold text-[12.5px]">
+            ¿Por qué el descanso es clave para tu espalda?
+          </strong>
+          <p className="text-[12.5px] text-neutral-700 leading-snug">
+            Durante el sueño profundo tu musculatura se relaja por completo y la columna descomprime la carga diaria.
+          </p>
+        </div>
+      </div>
+
+      {/* Option Cards with auto-advance */}
       <div className="w-full flex flex-col gap-3">
         {options.map((opt) => {
           const isSelected = selectedOption === opt.title;
@@ -98,9 +97,6 @@ export const ScreenSleepImpact: React.FC<ScreenSleepImpactProps> = ({
                 <span className="font-semibold text-[#1A1A1A] text-[16px] leading-snug">
                   {opt.title}
                 </span>
-                <span className="text-[13px] text-neutral-500 font-normal mt-0.5">
-                  {opt.desc}
-                </span>
               </div>
               <div
                 className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
@@ -117,31 +113,6 @@ export const ScreenSleepImpact: React.FC<ScreenSleepImpactProps> = ({
           );
         })}
       </div>
-
-      {/* Educational Insight Card for Sleep */}
-      {showInsight && (
-        <div className="w-full bg-[#F0FDF4] border border-[#16A34A]/30 rounded-[18px] p-4.5 flex flex-col gap-2.5 shadow-xs animate-in fade-in zoom-in-95 duration-200">
-          <div className="flex items-center gap-2 text-[#16A34A] font-bold text-[14.5px]">
-            <span className="text-[18px]">🌙</span>
-            <span>¿Por qué el descanso es clave para tu espalda?</span>
-          </div>
-          <p className="text-[13.5px] text-neutral-700 leading-relaxed">
-            Durante la noche, tu espalda descansa del peso de estar de pie o sentado, y tus músculos se relajan. Un sueño interrumpido no permite que esa relajación se complete, y la tensión lumbar se mantiene.
-          </p>
-        </div>
-      )}
-
-      {/* Continue Button */}
-      {showInsight && (
-        <div className="w-full pt-1">
-          <PrimaryButton
-            id="btn-sleep-continue"
-            onClick={handleFinalContinue}
-          >
-            Entendido, continuar
-          </PrimaryButton>
-        </div>
-      )}
     </div>
   );
 };

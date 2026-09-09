@@ -19,8 +19,8 @@ export const ScreenPainLevelSummary: React.FC<ScreenPainLevelSummaryProps> = ({
     <div className="w-full flex flex-col gap-6">
       {/* Header section with percentage & progress bar */}
       <div className="w-full">
-        <Eyebrow percentage={92} />
-        <ProgressBar progress={92} />
+        <Eyebrow percentage={98} phase="Tu Plan" />
+        <ProgressBar progress={98} />
       </div>
 
       {/* Screen Title */}

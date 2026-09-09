@@ -102,8 +102,8 @@ export const ScreenMovementJoints: React.FC<ScreenMovementJointsProps> = ({
     <div className="w-full flex flex-col gap-5 pb-6">
       {/* Progress */}
       <div className="w-full">
-        <Eyebrow percentage={35} line1="Personalización de tu programa" />
-        <ProgressBar progress={35} />
+        <Eyebrow percentage={52} phase="Evaluación" line1="Personalización de tu programa" />
+        <ProgressBar progress={52} />
       </div>
 
       {/* Title & Subtitle */}

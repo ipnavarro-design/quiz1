@@ -261,7 +261,7 @@ export const ScreenOfferCheckout: React.FC<ScreenOfferCheckoutProps> = ({
               window.location.href = 'https://dolorciaopago.myshopify.com/cart/46514408620129:1?checkout';
             }}
           >
-            OBTENER MI PLAN DOLORCIAO
+            OBTENER MI PLAN PERSONALIZADO
           </PrimaryButton>
         </div>
 
@@ -349,7 +349,7 @@ export const ScreenOfferCheckout: React.FC<ScreenOfferCheckoutProps> = ({
           variant="green"
           onClick={onFinalAction}
         >
-          OBTENER MI PLAN DOLORCIAO
+          OBTENER MI PLAN PERSONALIZADO
         </PrimaryButton>
       </div>
     </div>

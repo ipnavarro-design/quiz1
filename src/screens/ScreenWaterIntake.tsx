@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Eyebrow } from '../components/Eyebrow';
 import { ProgressBar } from '../components/ProgressBar';
 import { ScreenHeading } from '../components/ScreenHeading';
-import { ReinforcementText } from '../components/ReinforcementText';
-import { PrimaryButton } from '../components/PrimaryButton';
 
 interface ScreenWaterIntakeProps {
   onContinue: (waterAmount: string) => void;
@@ -13,46 +11,38 @@ export const ScreenWaterIntake: React.FC<ScreenWaterIntakeProps> = ({
   onContinue,
 }) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const [showInsight, setShowInsight] = useState(false);
 
   const options = [
     {
       id: 'opt-water-1',
       emoji: '💧',
       title: 'Menos de 1 litro al día',
-      desc: 'Rara vez tomo agua pura o solo cuando siento mucha sed.',
     },
     {
       id: 'opt-water-2',
       emoji: '🚰',
       title: '1 a 2 litros al día',
-      desc: 'Consumo habitual moderado distribuido en la jornada.',
     },
     {
       id: 'opt-water-3',
       emoji: '🌊',
       title: 'Más de 2 litros al día',
-      desc: 'Buena hidratación constante a lo largo de todo el día.',
     },
   ];
 
   const handleSelect = (title: string) => {
     setSelectedOption(title);
-    setShowInsight(true);
-  };
-
-  const handleFinalContinue = () => {
-    if (selectedOption) {
-      onContinue(selectedOption);
-    }
+    setTimeout(() => {
+      onContinue(title);
+    }, 250);
   };
 
   return (
     <div className="w-full flex flex-col gap-6">
       {/* Header section with percentage & progress bar */}
       <div className="w-full">
-        <Eyebrow percentage={72} />
-        <ProgressBar progress={72} />
+        <Eyebrow percentage={95} phase="Personalización" />
+        <ProgressBar progress={95} />
       </div>
 
       {/* Screen Title */}
@@ -60,12 +50,22 @@ export const ScreenWaterIntake: React.FC<ScreenWaterIntakeProps> = ({
         <ScreenHeading as="h2" id="q-water-title">
           ¿Cuánta agua consumís al día?
         </ScreenHeading>
-        <ReinforcementText>
-          La hidratación es clave para mantener la flexibilidad y elasticidad de tu cuerpo.
-        </ReinforcementText>
       </div>
 
-      {/* Option Cards */}
+      {/* Educational Insight Card (C.11) trimmed to 1 short sentence */}
+      <div className="w-full bg-[#F0FDF4] border border-[#16A34A]/30 rounded-[16px] p-3.5 flex items-center gap-2.5 shadow-2xs">
+        <span className="text-[20px] shrink-0">💧</span>
+        <div className="flex flex-col gap-0.5 text-left">
+          <strong className="text-[#16A34A] font-bold text-[12.5px]">
+            ¿Por qué el agua es clave para tu espalda?
+          </strong>
+          <p className="text-[12.5px] text-neutral-700 leading-snug">
+            Los discos de tu columna necesitan agua para mantener su amortiguación natural y evitar la rigidez.
+          </p>
+        </div>
+      </div>
+
+      {/* Option Cards with auto-advance */}
       <div className="w-full flex flex-col gap-3">
         {options.map((opt) => {
           const isSelected = selectedOption === opt.title;
@@ -88,9 +88,6 @@ export const ScreenWaterIntake: React.FC<ScreenWaterIntakeProps> = ({
                 <span className="font-semibold text-[#1A1A1A] text-[16px] leading-snug">
                   {opt.title}
                 </span>
-                <span className="text-[13px] text-neutral-500 font-normal mt-0.5">
-                  {opt.desc}
-                </span>
               </div>
               <div
                 className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
@@ -107,31 +104,6 @@ export const ScreenWaterIntake: React.FC<ScreenWaterIntakeProps> = ({
           );
         })}
       </div>
-
-      {/* Educational Insight Card (C.11) */}
-      {showInsight && (
-        <div className="w-full bg-[#F0FDF4] border border-[#16A34A]/30 rounded-[18px] p-4.5 flex flex-col gap-2.5 shadow-xs animate-in fade-in zoom-in-95 duration-200">
-          <div className="flex items-center gap-2 text-[#16A34A] font-bold text-[14.5px]">
-            <span className="text-[18px]">💧</span>
-            <span>¿Por qué el agua es clave para tu espalda?</span>
-          </div>
-          <p className="text-[13.5px] text-neutral-700 leading-relaxed">
-            Los discos de tu columna están compuestos en su mayoría por agua. Mantenerte bien hidratado ayuda a que conserven su elasticidad y amortiguación, reduciendo la rigidez y protegiendo tu espalda en cada movimiento.
-          </p>
-        </div>
-      )}
-
-      {/* Continue Button */}
-      {showInsight && (
-        <div className="w-full pt-1">
-          <PrimaryButton
-            id="btn-water-continue"
-            onClick={handleFinalContinue}
-          >
-            Entendido, continuar
-          </PrimaryButton>
-        </div>
-      )}
     </div>
   );
 };

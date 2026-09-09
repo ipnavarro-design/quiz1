@@ -33,8 +33,8 @@ export const ScreenHeight: React.FC<ScreenHeightProps> = ({
     <div className="w-full flex flex-col gap-6">
       {/* Header section with percentage & progress bar */}
       <div className="w-full">
-        <Eyebrow percentage={16} />
-        <ProgressBar progress={16} />
+        <Eyebrow percentage={77} phase="Personalización" />
+        <ProgressBar progress={77} />
       </div>
 
       {/* Screen Title */}

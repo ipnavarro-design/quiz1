@@ -81,10 +81,10 @@ export const Screen6Goals: React.FC<Screen6GoalsProps> = ({ onContinue }) => {
 
   return (
     <div className="w-full flex flex-col gap-6">
-      {/* Header section with 88% progress */}
+      {/* Header section with 97% progress */}
       <div className="w-full">
-        <Eyebrow percentage={88} />
-        <ProgressBar progress={88} />
+        <Eyebrow percentage={97} phase="Personalización" />
+        <ProgressBar progress={97} />
       </div>
 
       {/* Screen Title & Subtitle */}

@@ -43,8 +43,8 @@ export const ScreenRoutineDuration: React.FC<ScreenRoutineDurationProps> = ({
     <div className="w-full flex flex-col gap-6">
       {/* Header section with percentage & progress bar */}
       <div className="w-full">
-        <Eyebrow percentage={60} />
-        <ProgressBar progress={60} />
+        <Eyebrow percentage={91} phase="Personalización" />
+        <ProgressBar progress={91} />
       </div>
 
       {/* Screen Title */}

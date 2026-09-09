@@ -17,19 +17,16 @@ export const ScreenRoutineLocation: React.FC<ScreenRoutineLocationProps> = ({
       id: 'opt-loc-home',
       emoji: '🏠',
       title: 'En casa',
-      desc: 'En una colchoneta, alfombra o en el suelo con comodidad y privacidad.',
     },
     {
       id: 'opt-loc-outdoor',
       emoji: '🌳',
       title: 'Al aire libre',
-      desc: 'En el parque, jardín o terraza para conectar con la naturaleza.',
     },
     {
       id: 'opt-loc-both',
       emoji: '🔄',
       title: 'En ambos lugares',
-      desc: 'Alternar según mis horarios, el clima y mi rutina semanal.',
     },
   ];
 
@@ -37,8 +34,8 @@ export const ScreenRoutineLocation: React.FC<ScreenRoutineLocationProps> = ({
     <div className="w-full flex flex-col gap-6">
       {/* Header section with percentage & progress bar */}
       <div className="w-full">
-        <Eyebrow percentage={44} />
-        <ProgressBar progress={44} />
+        <Eyebrow percentage={85} phase="Personalización" />
+        <ProgressBar progress={85} />
       </div>
 
       {/* Screen Title */}
@@ -67,9 +64,6 @@ export const ScreenRoutineLocation: React.FC<ScreenRoutineLocationProps> = ({
             <div className="flex flex-col text-left">
               <span className="font-semibold text-[#1A1A1A] text-[16px] leading-snug">
                 {opt.title}
-              </span>
-              <span className="text-[13px] text-neutral-500 font-normal mt-0.5">
-                {opt.desc}
               </span>
             </div>
           </OptionCard>

@@ -41,8 +41,8 @@ export const Screen2Duration: React.FC<Screen2DurationProps> = ({ onSelectOption
     <div className="w-full flex flex-col gap-6">
       {/* Header section */}
       <div className="w-full">
-        <Eyebrow percentage={48} />
-        <ProgressBar progress={48} />
+        <Eyebrow percentage={87} phase="Personalización" />
+        <ProgressBar progress={87} />
       </div>
 
       {/* Screen Title & Reinforcement */}

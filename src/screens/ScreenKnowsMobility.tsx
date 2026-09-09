@@ -14,17 +14,14 @@ export const ScreenKnowsMobility: React.FC<ScreenKnowsMobilityProps> = ({
     {
       id: 'opt-mobility-yes',
       label: 'Sí, la he probado',
-      sublabel: 'Tengo experiencia previa con ejercicios de movilidad',
     },
     {
       id: 'opt-mobility-heard',
       label: 'He oído alguna que otra cosa',
-      sublabel: 'He visto contenido pero nunca he seguido un protocolo guiado',
     },
     {
       id: 'opt-mobility-never',
       label: 'Nunca escuché hablar de ella',
-      sublabel: 'Es mi primera vez y busco una rutina segura y efectiva',
     },
   ];
 
@@ -32,8 +29,8 @@ export const ScreenKnowsMobility: React.FC<ScreenKnowsMobilityProps> = ({
     <div className="w-full flex flex-col gap-6">
       {/* Header section with percentage & progress bar */}
       <div className="w-full">
-        <Eyebrow percentage={10} />
-        <ProgressBar progress={10} />
+        <Eyebrow percentage={30} phase="Evaluación" />
+        <ProgressBar progress={30} />
       </div>
 
       {/* Screen Title */}
@@ -60,9 +57,6 @@ export const ScreenKnowsMobility: React.FC<ScreenKnowsMobilityProps> = ({
             <div className="flex-1 flex flex-col pr-3">
               <span className="font-semibold text-[#1A1A1A] text-[16.5px] sm:text-[17.5px] leading-snug group-hover:text-[#16A34A] transition-colors">
                 {opt.label}
-              </span>
-              <span className="text-[13px] text-neutral-500 font-normal mt-0.5">
-                {opt.sublabel}
               </span>
             </div>
 

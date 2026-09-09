@@ -27,60 +27,62 @@ export type ScreenIndex =
   | 1 // Genero
   | 2 // Edad
   | 3 // Conoce Movilidad
-  | 4 // Informacion Movilidad
-  | 5 // Altura
-  | 6 // Peso
-  | 7 // Nombre
-  | 8 // Metodos Previos
-  | 9 // Localizacion del dolor
-  | 10 // Zonas de dolor en movimiento (adaptacion ejercicios)
-  | 11 // Dias dolor semana
-  | 12 // Nivel de Actividad
-  | 13 // Lugar de Rutinas
-  | 14 // Tiempo con el dolor
-  | 15 // Intensidad del dolor
-  | 16 // Duracion deseada de rutinas
-  | 17 // Educacion tiempo (10-15 min)
-  | 18 // Horas de sueno
-  | 19 // Consumo de agua + Info
-  | 20 // Impacto en vida diaria
-  | 21 // Prevención y riesgos
-  | 22 // Objetivos 30 dias
-  | 23 // Resumen nivel de rigidez / movilidad
-  | 24 // Transformacion postural
-  | 25 // Proyeccion de resultados (Hoy vs 21 dias)
-  | 26 // Loader analizando respuestas
-  | 27; // Etapa final unificada: Plan listo, Metodología/Calendario, Testimonios, Bonuses, Oferta & Checkout
+  | 4 // Informacion Movilidad (Metodo 100% Biomecanico)
+  | 5 // Localizacion del dolor
+  | 6 // Zonas de dolor en movimiento
+  | 7 // Dias molestia semana
+  | 8 // Impacto en la vida diaria
+  | 9 // Slide de refuerzo / prueba social intermedia
+  | 10 // Metodos Previos
+  | 11 // Nombre
+  | 12 // Altura
+  | 13 // Peso
+  | 14 // Nivel de Actividad
+  | 15 // Lugar de Rutinas
+  | 16 // Tiempo con el dolor
+  | 17 // Intensidad del dolor
+  | 18 // Duracion deseada de rutinas
+  | 19 // Educacion tiempo (10-15 min)
+  | 20 // Horas de sueno
+  | 21 // Consumo de agua
+  | 22 // Prevención y riesgos
+  | 23 // Objetivos 30 dias
+  | 24 // Resumen nivel de rigidez / movilidad
+  | 25 // Transformacion postural
+  | 26 // Proyeccion de resultados (Hoy vs 21 dias)
+  | 27 // Loader analizando respuestas
+  | 28; // Etapa final unificada: Plan listo, Metodología/Calendario, Testimonios, Bonuses, Oferta & Checkout
 
 export const PROGRESS_MAP: Record<ScreenIndex, number> = {
   0: 0,
-  1: 4,
-  2: 8,
-  3: 10,
-  4: 12,
-  5: 16,
-  6: 20,
-  7: 24,
-  8: 28,
-  9: 32,
-  10: 36,
-  11: 40,
-  12: 44,
-  13: 48,
-  14: 52,
-  15: 56,
-  16: 60,
-  17: 64,
-  18: 68,
-  19: 72,
-  20: 80,
-  21: 84,
-  22: 88,
-  23: 92,
-  24: 96,
-  25: 100,
+  1: 12,
+  2: 22,
+  3: 30,
+  4: 38,
+  5: 46,
+  6: 52,
+  7: 58,
+  8: 64,
+  9: 66,
+  10: 70,
+  11: 74,
+  12: 77,
+  13: 80,
+  14: 83,
+  15: 85,
+  16: 87,
+  17: 89,
+  18: 91,
+  19: 92,
+  20: 94,
+  21: 95,
+  22: 96,
+  23: 97,
+  24: 98,
+  25: 99,
   26: 100,
   27: 100,
+  28: 100,
 };
 
 // Punto final del funnel. Acción posterior a definir en un paso futuro. No implementar redirección a WhatsApp ni ningún otro destino aquí todavía.

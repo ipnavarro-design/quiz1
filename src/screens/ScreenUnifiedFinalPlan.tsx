@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, ChevronUp, Check, CheckCircle2, Shield, Smartphone, Video, Camera, Calendar, Award, Droplets, Activity, Clock, Sliders, Dumbbell, TrendingUp, Sparkles, Library } from 'lucide-react';
+import { ChevronDown, ChevronUp, Check, Shield, Smartphone, Calendar, Activity, TrendingUp, Sparkles, Library, Dumbbell, Moon } from 'lucide-react';
 import { Eyebrow } from '../components/Eyebrow';
 import { ProgressBar } from '../components/ProgressBar';
 import { PrimaryButton } from '../components/PrimaryButton';
@@ -17,8 +17,6 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
   // Countdown Timer (15 mins = 900s)
   const [timeLeft, setTimeLeft] = useState(899);
   const [openFaqs, setOpenFaqs] = useState<Record<number, boolean>>({});
-  const [selectedPhase, setSelectedPhase] = useState<1 | 2 | 3>(1);
-  const [showAllDays, setShowAllDays] = useState(false);
 
   const toggleFaq = (idx: number) => {
     setOpenFaqs((prev) => ({ ...prev, [idx]: !prev[idx] }));
@@ -71,8 +69,10 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
       const p1 = respuestas.pregunta1.toLowerCase();
       if (p1.includes('lumbar')) return 'tu zona lumbar y espalda baja';
       if (p1.includes('cervical')) return 'tu zona cervical y cuello';
+      if (p1.includes('dorsal')) return 'tu zona dorsal y espalda media';
       if (p1.includes('pierna')) return 'tus piernas y caderas';
       if (p1.includes('hormigueo')) return 'tu columna vertebral y postura';
+      if (p1.includes('toda la espalda')) return 'toda tu espalda y columna';
       return respuestas.pregunta1;
     }
     return 'tu zona lumbar y espalda';
@@ -80,71 +80,139 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
 
   const targetPainAreaText = getTargetPainArea();
 
-  // Section 1: Comparison table
-  const comparisons = [
-    {
-      metric: 'Nivel de Tensión y Rigidez',
-      before: '8.5 / 10 (Molestia y rigidez diaria)',
-      after: '1.0 / 10 (Cuerpo ágil y libre de molestias)',
-    },
-    {
-      metric: 'Movilidad de Columna',
-      before: 'Rigidez y restricción al agacharte',
-      after: 'Rango libre de movimiento',
-    },
-    {
-      metric: 'Calidad de Sueño',
-      before: 'Dificultad para descansar con comodidad',
-      after: '7-8h de descanso continuo',
-    },
-    {
-      metric: 'Confianza Corporal',
-      before: 'Inseguridad al agacharte o moverte',
-      after: 'Confianza y soltura en tu día a día',
-    },
-  ];
+  const renderPricingCard = (cardId: string) => (
+    <div
+      id={cardId}
+      className="w-full bg-white border-2 border-[#0E4A72] rounded-[24px] p-5 sm:p-6 flex flex-col gap-4 shadow-lg relative overflow-hidden text-left"
+    >
+      {/* Red Ribbon / Badge for Discount in RED */}
+      <div className="absolute top-0 right-0 bg-[#DC2626] text-white text-[11px] font-extrabold px-3 py-1 rounded-bl-[14px] uppercase tracking-wider shadow-xs">
+        70% OFF HOY
+      </div>
 
-  // Section 2: Real 30-day program calendar
-  const allCalendarDays = [
-    { day: 1, emoji: '🧭', title: 'Cadera y Flexores de Cadera', focus: 'Descompresión inicial y pelvis', phase: 1 },
-    { day: 2, emoji: '🌊', title: 'Espalda e Isquiotibiales', focus: 'Liberación de cadena posterior', phase: 1 },
-    { day: 3, emoji: '🦶', title: 'Tobillos y Glúteos', focus: 'Base articular y soporte', phase: 1 },
-    { day: 4, emoji: '⚡', title: 'Full-Body A', focus: 'Activación y descompresión global', phase: 1 },
-    { day: 5, emoji: '🦅', title: 'Hombros y Cadena Posterior', focus: 'Apertura torácica y postura', phase: 1 },
-    { day: 6, emoji: '🌿', title: 'Cuello y Columna', focus: 'Descompresión cervical y eje', phase: 1 },
-    { day: 7, emoji: '🔥', title: 'Full-Body B', focus: 'Control motor y descarga', phase: 1 },
-    { day: 8, emoji: '🌱', title: 'Cadera y Flexores de Cadera', focus: 'Amplitud de movimiento profundo', phase: 1 },
-    { day: 9, emoji: '🧘', title: 'Espalda e Isquiotibiales', focus: 'Flexibilidad y descarga de espalda', phase: 1 },
-    { day: 10, emoji: '🛡️', title: 'Tobillos y Glúteos', focus: 'Blindaje de la base pélvica', phase: 1 },
+      {/* Plan Header */}
+      <div className="flex flex-col pt-1">
+        <span className="text-[12px] font-bold text-[#0E4A72] uppercase tracking-wider">
+          Acceso Completo • App Móvil Incluida
+        </span>
+        <h3
+          className="text-[21px] sm:text-[23px] font-extrabold text-[#1E293B]"
+          style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}
+        >
+          Programa 30 Días DolorCiao
+        </h3>
+        <span className="text-[12px] text-slate-500 mt-0.5">
+          Guía en video paso a paso para hacer desde tu celular o computadora
+        </span>
+      </div>
 
-    { day: 11, emoji: '🎯', title: 'Full-Body A', focus: 'Fuerza postural y estabilidad', phase: 2 },
-    { day: 12, emoji: '✨', title: 'Hombros y Cadena Posterior', focus: 'Alineación escapular segura', phase: 2 },
-    { day: 13, emoji: '🕊️', title: 'Cuello y Columna', focus: 'Flexibilidad axial progresiva', phase: 2 },
-    { day: 14, emoji: '⭐', title: 'Full-Body B', focus: 'Coordinación articular fluida', phase: 2 },
-    { day: 15, emoji: '🚀', title: 'Cadera y Flexores de Cadera', focus: 'Desbloqueo de psoas y cadera', phase: 2 },
-    { day: 16, emoji: '💎', title: 'Espalda e Isquiotibiales', focus: 'Rango amplio sin pellizcos', phase: 2 },
-    { day: 17, emoji: '💪', title: 'Tobillos y Glúteos', focus: 'Sostén lumbo-pélvico activo', phase: 2 },
-    { day: 18, emoji: '🌈', title: 'Full-Body A', focus: 'Estabilidad funcional continua', phase: 2 },
-    { day: 19, emoji: '🕊️', title: 'Hombros y Cadena Posterior', focus: 'Descarga de trapecios y dorsales', phase: 2 },
-    { day: 20, emoji: '🌿', title: 'Cuello y Columna', focus: 'Restauración del eje espinal', phase: 2 },
+      {/* Countdown Timer Inside the Card */}
+      <div className="w-full bg-red-50 border border-red-200 rounded-[14px] p-3 flex items-center justify-between shadow-2xs">
+        <div className="flex items-center gap-2">
+          <span className="text-[16px] animate-pulse">⏰</span>
+          <span className="text-[12px] sm:text-[13px] font-bold text-red-700">
+            Descuento especial expira en:
+          </span>
+        </div>
+        <span className="text-[15px] sm:text-[16px] font-extrabold text-red-700 font-mono tracking-wider bg-white px-2.5 py-0.5 rounded-md border border-red-200">
+          {formattedTime}
+        </span>
+      </div>
 
-    { day: 21, emoji: '🌟', title: 'Full-Body B', focus: 'Consolidación del movimiento', phase: 3 },
-    { day: 22, emoji: '🔥', title: 'Cadera y Flexores de Cadera', focus: 'Blindaje articular avanzado', phase: 3 },
-    { day: 23, emoji: '🎯', title: 'Espalda e Isquiotibiales', focus: 'Resistencia muscular segura', phase: 3 },
-    { day: 24, emoji: '🌱', title: 'Tobillos y Glúteos', focus: 'Firmeza postural y apoyo', phase: 3 },
-    { day: 25, emoji: '💫', title: 'Full-Body A', focus: 'Autonomía y fluidez diaria', phase: 3 },
-    { day: 26, emoji: '⚡', title: 'Hombros y Cadena Posterior', focus: 'Fortalecimiento de la espalda', phase: 3 },
-    { day: 27, emoji: '🌸', title: 'Cuello y Columna', focus: 'Elasticidad y bienestar vertebral', phase: 3 },
-    { day: 28, emoji: '🛡️', title: 'Full-Body B', focus: 'Faja lumbo-abdominal blindada', phase: 3 },
-    { day: 29, emoji: '🏆', title: 'Cadera y Flexores de Cadera', focus: 'Máxima amplitud sin molestias', phase: 3 },
-    { day: 30, emoji: '👑', title: 'Rutina Final / Test de Cierre', focus: 'Evaluación final y certificación', phase: 3 },
-  ];
+      {/* Price Display in Argentine Pesos (ARS) */}
+      <div className="flex flex-col gap-1.5 py-2 border-y border-slate-100">
+        <div className="flex items-baseline gap-3 flex-wrap">
+          <span className="text-[16px] text-slate-400 line-through font-semibold">
+            $25.990 ARS
+          </span>
+          <div className="flex items-baseline gap-1">
+            <span
+              className="text-[36px] sm:text-[40px] font-black text-[#0E4A72]"
+              style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}
+            >
+              $7.797
+            </span>
+            <span className="text-[15px] font-extrabold text-slate-700">ARS</span>
+          </div>
+          <span className="ml-auto text-[11px] font-bold text-[#0E4A72] bg-[#EDF4F9] px-2.5 py-1 rounded-full border border-[#CBD5E1]">
+            Pago único
+          </span>
+        </div>
+        <div className="inline-block bg-[#DC2626] text-white text-[11px] font-bold px-2.5 py-0.5 rounded-md self-start shadow-2xs">
+          Ahorrás $18.193 ARS hoy (70% OFF)
+        </div>
+      </div>
 
-  const displayedDays = showAllDays
-    ? allCalendarDays
-    : allCalendarDays.filter((d) => d.phase === selectedPhase);
+      {/* Features Checklist */}
+      <div className="flex flex-col gap-2.5 text-[13px] sm:text-[13.5px] text-slate-700">
+        <div className="flex items-center gap-2">
+          <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
+          <span>Programa guiado de 30 días en video HD (10-15 min/día)</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
+          <span>Biblioteca con más de 70 ejercicios de movilidad</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
+          <span className="font-semibold text-slate-900">
+            Calibrado para reducir el dolor de espalda ({targetPainAreaText})
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
+          <span>App móvil profesional para iOS y Android de por vida</span>
+        </div>
+        <div className="flex items-start gap-2">
+          <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5] mt-0.5" />
+          <span>
+            Test fotográfico inicial y final (Día 1 vs Día 30){' '}
+            <span className="text-[11.5px] text-slate-500 font-medium block sm:inline">
+              (Opcional y 100% privado en tu celular)
+            </span>
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
+          <span>Test de Cierre del Día 30 para comprobar tu autonomía</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
+          <span>Sistema de hábitos diarios (agua, sueño y pausas activas)</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
+          <span>Calendario visual de rachas y tablero de progreso</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
+          <span>Garantía incondicional de satisfacción por 30 días</span>
+        </div>
+      </div>
 
-  // Section 3: Historias y Casos Reales
+      {/* Green CTA Button */}
+      <div className="w-full pt-2">
+        <PrimaryButton
+          id={`btn-checkout-${cardId}`}
+          variant="green"
+          href={CHECKOUT_SHOPIFY_URL}
+          target="_blank"
+          onClick={handleCheckout}
+        >
+          OBTENER MI PLAN PERSONALIZADO
+        </PrimaryButton>
+      </div>
+
+      {/* Security Badges */}
+      <div className="flex justify-center items-center gap-3 text-[11.5px] text-slate-500 pt-1">
+        <span>🔒 Pago 100% Seguro</span>
+        <span>•</span>
+        <span>⚡ Acceso Inmediato en tu Celular</span>
+      </div>
+    </div>
+  );
+
+  // Testimonios
   const testimonials = [
     {
       id: 'test-1',
@@ -202,7 +270,7 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
     );
   };
 
-  // Section 5: FAQs
+  // FAQs
   const faqs: { q: string; a: React.ReactNode }[] = [
     {
       q: '¿Cómo voy a lograr resultados si el programa es online a través de la App?',
@@ -260,7 +328,25 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
   ];
 
   return (
-    <div className="w-full flex flex-col gap-10 pb-12">
+    <div className="w-full flex flex-col gap-10 pb-12 relative">
+      {/* Sticky Countdown Timer Header - Permanece fijo en la parte superior al escrollear */}
+      <div className="sticky top-0 z-50 -mx-4 sm:-mx-6 -mt-4 sm:-mt-6 mb-1 bg-[#0E4A72] text-white px-4 py-2.5 shadow-md flex items-center justify-between border-b border-white/20 rounded-t-[22px] backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <span className="text-[15px] animate-pulse">⏰</span>
+          <span className="text-[12px] sm:text-[13px] font-bold text-white leading-tight">
+            Descuento especial expira en:
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="bg-[#DC2626] text-white text-[10.5px] sm:text-[11px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
+            70% OFF
+          </span>
+          <span className="text-[14px] sm:text-[15px] font-extrabold text-red-600 font-mono tracking-wider bg-white px-2 py-0.5 rounded-md border border-red-200 shadow-2xs">
+            {formattedTime}
+          </span>
+        </div>
+      </div>
+
       {/* Header progress */}
       <div className="w-full">
         <Eyebrow percentage={100} line1="Plan calibrado con éxito" />
@@ -268,11 +354,10 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
       </div>
 
       {/* ========================================================================= */}
-      {/* 1. PLAN CALIBRADO & COMPARACIÓN ANTES VS META                             */}
+      {/* 1. PRIMER PANTALLAZO (ESTILO REFERENCIA CON AHORA / TU OBJETIVO & ESTADOS)  */}
       {/* ========================================================================= */}
-      <section className="w-full flex flex-col gap-6">
+      <section className="w-full flex flex-col gap-5">
         <div className="w-full text-center space-y-2">
-          {/* Maintained in GREEN as requested */}
           <div className="inline-block bg-[#16A34A] text-white text-[13px] font-bold px-3.5 py-1 rounded-full shadow-sm">
             🎉 ¡Plan Calibrado y Listo!
           </div>
@@ -303,45 +388,113 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
             )}
         </div>
 
-        {/* Comparison Table / Cards (Fondo azul y mini títulos blancos) */}
-        <div className="w-full bg-[#0E4A72] border border-[#0A3756] rounded-[22px] p-5 sm:p-6 flex flex-col gap-4 shadow-md">
-          <div className="grid grid-cols-2 gap-3 pb-2 border-b border-white/20 text-center text-[12px] font-extrabold uppercase tracking-wider">
-            <div className="text-red-200 bg-red-950/60 py-1.5 rounded-lg border border-red-400/40">
-              Estado Actual
-            </div>
-            <div className="text-emerald-200 bg-emerald-950/60 py-1.5 rounded-lg border border-emerald-400/40">
-              Tu Meta con DolorCiao
-            </div>
+        {/* Tarjeta Superior: Comparación Postural con toggle Ahora / Tu objetivo */}
+        <div className="w-full bg-[#F5F4F0] border border-[#E2E8F0] rounded-[24px] p-4 sm:p-5 flex flex-col items-center gap-4 shadow-xs">
+          {/* Pill Toggle Centrado */}
+          <div className="bg-white/95 backdrop-blur-xs px-6 py-1.5 rounded-full shadow-xs border border-slate-200/80 flex items-center justify-center gap-5 sm:gap-6">
+            <span className="text-[14px] sm:text-[15px] font-semibold text-slate-800">
+              Ahora
+            </span>
+            <span className="text-slate-300 font-light text-[13px]">|</span>
+            <span className="text-[14px] sm:text-[15px] font-semibold text-slate-800">
+              Tu objetivo
+            </span>
           </div>
 
-          <div className="flex flex-col gap-3.5">
-            {comparisons.map((item, idx) => (
-              <div key={idx} className="flex flex-col gap-1.5 pb-3 border-b border-white/15 last:border-0 last:pb-0">
-                <span className="text-[13px] font-bold text-white">
-                  {item.metric}
-                </span>
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="p-2.5 rounded-[12px] bg-white/95 text-red-950 font-medium text-[12.5px] leading-snug shadow-xs">
-                    ❌ {item.before}
-                  </div>
-                  <div className="p-2.5 rounded-[12px] bg-emerald-50 text-emerald-950 font-semibold text-[12.5px] leading-snug shadow-xs">
-                    ✅ {item.after}
-                  </div>
-                </div>
-              </div>
-            ))}
+          {/* Imagen de Transformación Postural */}
+          <div className="w-full flex items-center justify-center py-1">
+            <img
+              src="/images/posture_goal_comparison.jpg?v=2"
+              alt="Ahora vs Tu objetivo con DolorCiao"
+              className="w-full max-w-[390px] h-auto object-contain rounded-[18px] drop-shadow-xs"
+              referrerPolicy="no-referrer"
+            />
           </div>
         </div>
 
-        {/* CTA Button in GREEN as requested */}
+        {/* Tarjeta Inferior: Cuadrante de Estados con Reducir el dolor de espalda */}
+        <div className="w-full bg-white border border-[#CBD5E1] rounded-[22px] p-4 sm:p-5 shadow-xs">
+          {/* Fila añadida: Reducir el dolor de espalda */}
+          <div className="flex items-center gap-3 pb-3 mb-3.5 border-b border-slate-100 text-left">
+            <div className="w-8 h-8 rounded-full bg-red-50 text-[#DC2626] flex items-center justify-center shrink-0">
+              <Activity className="w-4 h-4" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                Objetivo principal
+              </span>
+              <span className="text-[14px] sm:text-[15px] font-extrabold text-[#0E4A72]">
+                Reducir el dolor de espalda
+              </span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-x-4 gap-y-4 text-left">
+            {/* Estado 1: Nivel de rigidez */}
+            <div className="flex items-start gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-[#EDF4F9] text-[#0E4A72] flex items-center justify-center shrink-0 mt-0.5">
+                <Activity className="w-4 h-4" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[13px] sm:text-[14px] font-bold text-[#1E293B] leading-tight">
+                  Nivel de rigidez
+                </span>
+                <span className="text-[11.5px] sm:text-[12px] text-slate-500 mt-0.5 leading-snug">
+                  8.5/10 → 1.0/10 (Ágil)
+                </span>
+              </div>
+            </div>
+
+            {/* Estado 2: Movilidad articular */}
+            <div className="flex items-start gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-[#EDF4F9] text-[#0E4A72] flex items-center justify-center shrink-0 mt-0.5">
+                <TrendingUp className="w-4 h-4" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[13px] sm:text-[14px] font-bold text-[#1E293B] leading-tight">
+                  Movilidad articular
+                </span>
+                <span className="text-[11.5px] sm:text-[12px] text-slate-500 mt-0.5 leading-snug">
+                  Rango libre y flexible
+                </span>
+              </div>
+            </div>
+
+            {/* Estado 3: Calidad de descanso */}
+            <div className="flex items-start gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-[#EDF4F9] text-[#0E4A72] flex items-center justify-center shrink-0 mt-0.5">
+                <Moon className="w-4 h-4" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[13px] sm:text-[14px] font-bold text-[#1E293B] leading-tight">
+                  Calidad de descanso
+                </span>
+                <span className="text-[11.5px] sm:text-[12px] text-slate-500 mt-0.5 leading-snug">
+                  7-8h de sueño continuo
+                </span>
+              </div>
+            </div>
+
+            {/* Estado 4: Confianza corporal */}
+            <div className="flex items-start gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-[#EDF4F9] text-[#0E4A72] flex items-center justify-center shrink-0 mt-0.5">
+                <Sparkles className="w-4 h-4" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[13px] sm:text-[14px] font-bold text-[#1E293B] leading-tight">
+                  Confianza corporal
+                </span>
+                <span className="text-[11.5px] sm:text-[12px] text-slate-500 mt-0.5 leading-snug">
+                  Soltura total al moverte
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 1er Cuadrante de Precio COMPLETO (debajo del cuadrante de estados) */}
         <div className="w-full pt-1">
-          <PrimaryButton
-            id="btn-plan-ready-scroll"
-            variant="green"
-            onClick={scrollToCheckout}
-          >
-            Ver plan completo de 30 días y comenzar →
-          </PrimaryButton>
+          {renderPricingCard('pricing-card-top')}
         </div>
       </section>
 
@@ -349,202 +502,7 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
       <div className="w-full border-t border-slate-200 my-1" />
 
       {/* ========================================================================= */}
-      {/* 2. ¿CÓMO FUNCIONA EL PLAN? CALENDARIO REAL DE 30 DÍAS & 3 FASES           */}
-      {/* ========================================================================= */}
-      <section className="w-full flex flex-col gap-6">
-        <div className="w-full text-center space-y-2">
-          <div className="inline-block bg-[#EDF4F9] text-[#0E4A72] border border-[#CBD5E1] text-[12.5px] font-bold px-3.5 py-1 rounded-full">
-            Metodología Progresiva de 3 Fases (30 Días)
-          </div>
-          <h2
-            id="calendar-title"
-            className="text-[23px] sm:text-[27px] font-bold text-[#1E293B] leading-tight"
-            style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}
-          >
-            ¿Cómo funciona el plan{' '}
-            <span className="text-[#0E4A72] font-extrabold">DolorCiao</span>?
-          </h2>
-          <p className="text-[14px] text-slate-600 max-w-sm mx-auto">
-            30 días de progresión guiada en video (10 a 15 min/día) sin requerir flexibilidad previa ni equipamiento.
-          </p>
-        </div>
-
-        {/* Phase Selector Tabs */}
-        <div className="w-full grid grid-cols-3 gap-1.5 bg-slate-100 p-1.5 rounded-[16px]">
-          <button
-            type="button"
-            onClick={() => {
-              setSelectedPhase(1);
-              setShowAllDays(false);
-            }}
-            className={`py-2 px-1 text-[11px] sm:text-[12.5px] font-bold rounded-[12px] transition-all cursor-pointer text-center leading-tight ${
-              selectedPhase === 1 && !showAllDays
-                ? 'bg-[#0E4A72] text-white shadow-xs'
-                : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            Fase 1 (Días 1-10)
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setSelectedPhase(2);
-              setShowAllDays(false);
-            }}
-            className={`py-2 px-1 text-[11px] sm:text-[12.5px] font-bold rounded-[12px] transition-all cursor-pointer text-center leading-tight ${
-              selectedPhase === 2 && !showAllDays
-                ? 'bg-[#0E4A72] text-white shadow-xs'
-                : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            Fase 2 (Días 11-20)
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setSelectedPhase(3);
-              setShowAllDays(false);
-            }}
-            className={`py-2 px-1 text-[11px] sm:text-[12.5px] font-bold rounded-[12px] transition-all cursor-pointer text-center leading-tight ${
-              selectedPhase === 3 && !showAllDays
-                ? 'bg-[#0E4A72] text-white shadow-xs'
-                : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            Fase 3 (Días 21-30)
-          </button>
-        </div>
-
-        {/* Phase Description Box */}
-        <div className="w-full bg-[#EDF4F9] border border-[#CBD5E1] rounded-[16px] p-4 flex items-center gap-3.5">
-          <span className="text-[26px]">
-            {selectedPhase === 1 ? '🧭' : selectedPhase === 2 ? '🎯' : '👑'}
-          </span>
-          <div className="flex flex-col">
-            <span className="font-bold text-[#0E4A72] text-[14px]">
-              {selectedPhase === 1
-                ? 'Fase 1: Activación y Adaptación Funcional (Días 1 al 10)'
-                : selectedPhase === 2
-                ? 'Fase 2: Rango Articular y Cadena Posterior (Días 11 al 20)'
-                : 'Fase 3: Fortalecimiento Postural, Movilidad y Test de Cierre (Días 21 al 30)'}
-            </span>
-            <span className="text-[12.5px] text-slate-600 mt-0.5 leading-snug">
-              {selectedPhase === 1
-                ? 'Libera la tensión acumulada y mejora la movilidad con apertura de cadera y movimientos suaves.'
-                : selectedPhase === 2
-                ? 'Recupera la movilidad de columna, piernas y hombros, ampliando tu rango con total comodidad.'
-                : 'Fortalece tu postura y zona media, culminando en el Día 30 con tu Test de Cierre para validar tu progreso.'}
-            </span>
-          </div>
-        </div>
-
-        {/* Daily Schedule List */}
-        <div className="w-full bg-white border border-[#CBD5E1] rounded-[22px] p-4 sm:p-5 flex flex-col gap-2.5 shadow-sm">
-          <div className="flex items-center justify-between pb-1 border-b border-slate-100">
-            <span className="text-[12px] font-bold uppercase text-slate-500 tracking-wider">
-              {showAllDays ? 'Calendario Completo de 30 Días' : `Rutinas de Fase ${selectedPhase} (10-15 min/día)`}
-            </span>
-            <button
-              type="button"
-              onClick={() => setShowAllDays((prev) => !prev)}
-              className="text-[11.5px] font-bold text-[#0E4A72] hover:underline cursor-pointer"
-            >
-              {showAllDays ? 'Ver por fases' : 'Ver los 30 días'}
-            </button>
-          </div>
-
-          <div className="flex flex-col gap-2 max-h-[420px] overflow-y-auto pr-1">
-            {displayedDays.map((item) => (
-              <div
-                key={item.day}
-                className="flex items-center justify-between p-3 rounded-[12px] bg-slate-50 border border-slate-200/80 hover:bg-[#EDF4F9]/60 transition-colors"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="w-9 h-9 rounded-full bg-[#0E4A72] text-white text-[12.5px] font-bold flex items-center justify-center shrink-0 shadow-2xs">
-                    D{item.day}
-                  </span>
-                  <div className="flex flex-col text-left">
-                    <span className="text-[13.5px] font-bold text-slate-800 flex items-center gap-1.5">
-                      <span>{item.emoji}</span>
-                      <span>{item.title}</span>
-                    </span>
-                    <span className="text-[11.5px] text-[#0E4A72] font-semibold">
-                      {item.focus}
-                    </span>
-                  </div>
-                </div>
-                <span className="text-[11px] font-bold text-slate-500 bg-white px-2.5 py-1 rounded-full border border-slate-200 shrink-0">
-                  ⏱️ 10-15m
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Divider */}
-      <div className="w-full border-t border-slate-200 my-1" />
-
-      {/* ========================================================================= */}
-      {/* 3. TESTIMONIOS Y CASOS DE ÉXITO                                           */}
-      {/* ========================================================================= */}
-      <section className="w-full flex flex-col gap-5">
-        <div className="w-full text-center space-y-1.5">
-          <div className="inline-block bg-[#EDF4F9] text-[#0E4A72] border border-[#CBD5E1] text-[12px] font-bold px-3 py-0.5 rounded-full">
-            Historias y Casos Reales
-          </div>
-          <h3
-            id="testimonials-title"
-            className="text-[21px] sm:text-[25px] font-bold text-[#1E293B] leading-tight"
-            style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}
-          >
-            Personas que ya transformaron su bienestar con{' '}
-            <span className="text-[#0E4A72] font-extrabold">DolorCiao</span>
-          </h3>
-          <p className="text-[13px] text-slate-500 max-w-sm mx-auto">
-            Historias reales de personas que recuperaron su flexibilidad y postura diaria:
-          </p>
-        </div>
-
-        <div className="flex flex-col gap-3.5">
-          {testimonials.map((t) => (
-            <div
-              key={t.id}
-              className="w-full bg-white border border-[#CBD5E1] rounded-[18px] p-4 sm:p-5 flex flex-col gap-2.5 shadow-xs text-left"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <img
-                    src={t.image}
-                    alt={t.name}
-                    className="w-12 h-12 sm:w-13 sm:h-13 rounded-full object-cover border border-[#CBD5E1] shadow-2xs shrink-0"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div>
-                    <h4 className="font-bold text-[#1E293B] text-[14.5px] leading-tight">
-                      {t.name}
-                    </h4>
-                    <span className="text-[11.5px] text-slate-500">{t.age}</span>
-                  </div>
-                </div>
-                {renderStars(t.rating)}
-              </div>
-              <div className="inline-block bg-slate-100 text-[#0E4A72] text-[11.5px] font-bold px-2.5 py-0.5 rounded-md self-start border border-slate-200">
-                {t.condition}
-              </div>
-              <p className="text-[13px] text-slate-700 leading-relaxed italic bg-slate-50 p-3 rounded-[12px] border border-slate-200/60">
-                "{t.quote}"
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Divider */}
-      <div className="w-full border-t border-slate-200 my-1" />
-
-      {/* ========================================================================= */}
-      {/* 4. ENTREGABLES OFICIALES (ESTILO MINIMALISTA CON CELULARES)               */}
+      {/* 2. ENTREGABLES OFICIALES (ESTILO MINIMALISTA CON CELULARES)               */}
       {/* ========================================================================= */}
       <section className="w-full flex flex-col gap-6 sm:gap-8 py-2" id="deliverables-section">
         {/* Header estilo screenshot con resaltado celeste */}
@@ -657,184 +615,16 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
       <div className="w-full border-t border-slate-200 my-1" />
 
       {/* ========================================================================= */}
-      {/* 5. OFERTA FINAL, CHECKOUT, PRECIO EN ARS & GARANTÍA                        */}
+      {/* 3. PREGUNTAS FRECUENTES (FAQ ACCORDION)                                   */}
       {/* ========================================================================= */}
-      <section className="w-full flex flex-col gap-6" id="pricing-section">
-        {/* Offer Title */}
-        <div className="w-full text-center space-y-2">
-          <h2
-            id="checkout-title"
-            className="text-[24px] sm:text-[29px] font-bold text-[#1E293B] leading-tight"
-            style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}
-          >
-            Comenzá hoy tu programa de 30 días con{' '}
-            <span className="text-[#0E4A72] font-extrabold">DolorCiao</span>
-          </h2>
-          <p className="text-[14px] text-slate-600 max-w-md mx-auto">
-            {userName}, tu membresía incluye el programa de 30 días, la biblioteca con más de 70 ejercicios de movilidad, la app móvil, el seguimiento fotográfico (opcional y privado para vos) y el sistema de hábitos de por vida.
-          </p>
-        </div>
-
-        {/* Pricing Card with Navy Blue border and solid Green CTA */}
-        <div
-          id="pricing-card"
-          className="w-full bg-white border-2 border-[#0E4A72] rounded-[24px] p-6 flex flex-col gap-5 shadow-lg relative overflow-hidden text-left"
+      <section className="w-full flex flex-col gap-4">
+        <h3
+          className="text-[20px] font-bold text-[#1E293B] text-center"
+          style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}
         >
-          {/* Blue Ribbon */}
-          <div className="absolute top-0 right-0 bg-[#0E4A72] text-white text-[11px] font-extrabold px-3.5 py-1 rounded-bl-[14px] uppercase tracking-wider">
-            70% OFF HOY
-          </div>
-
-          {/* Plan Header */}
-          <div className="flex flex-col pt-1">
-            <span className="text-[12px] font-bold text-[#0E4A72] uppercase tracking-wider">
-              Acceso Completo • App Móvil Incluida
-            </span>
-            <h3
-              className="text-[21px] font-extrabold text-[#1E293B]"
-              style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}
-            >
-              Programa 30 Días DolorCiao
-            </h3>
-          </div>
-
-          {/* Countdown Timer INSIDE the pricing quadrant */}
-          <div className="w-full bg-red-50 border border-red-200 rounded-[14px] p-3 flex items-center justify-between shadow-2xs">
-            <div className="flex items-center gap-2">
-              <span className="text-[17px] animate-pulse">⏰</span>
-              <span className="text-[12.5px] sm:text-[13px] font-bold text-red-700">
-                Descuento especial expira en:
-              </span>
-            </div>
-            <span className="text-[15px] sm:text-[16px] font-extrabold text-red-700 font-mono tracking-wider bg-white px-2.5 py-0.5 rounded-md border border-red-200">
-              {formattedTime}
-            </span>
-          </div>
-
-          {/* Price Display in Argentine Pesos (ARS) as requested */}
-          <div className="flex items-baseline gap-3 py-2 border-y border-slate-100">
-            <span className="text-[17px] text-slate-400 line-through font-semibold">
-              $25.990 ARS
-            </span>
-            <div className="flex items-baseline gap-1">
-              <span
-                className="text-[38px] sm:text-[42px] font-black text-[#0E4A72]"
-                style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}
-              >
-                $7.797
-              </span>
-              <span className="text-[15px] font-extrabold text-slate-700">ARS</span>
-            </div>
-            <span className="ml-auto text-[11px] font-bold text-[#0E4A72] bg-[#EDF4F9] px-2.5 py-1 rounded-full border border-[#CBD5E1]">
-              Pago único
-            </span>
-          </div>
-
-          {/* Features Checklist */}
-          <div className="flex flex-col gap-2.5 text-[13.5px] text-slate-700">
-            <div className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
-              <span>Programa guiado de 30 días en video HD (10-15 min/día)</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
-              <span>Biblioteca con más de 70 ejercicios de movilidad</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
-              <span>Calibrado para {targetPainAreaText}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
-              <span>App móvil profesional para iOS y Android de por vida</span>
-            </div>
-            <div className="flex items-start gap-2">
-              <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5] mt-0.5" />
-              <span>
-                Test fotográfico inicial y final (Día 1 vs Día 30){' '}
-                <span className="text-[12px] text-slate-500 font-medium block sm:inline">
-                  (Opcional y 100% privado en tu celular, no compartes fotos con nadie)
-                </span>
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
-              <span>Test de Cierre del Día 30 para comprobar tu autonomía</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
-              <span>Sistema de hábitos diarios (agua, sueño y pausas activas)</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
-              <span>Calendario visual de rachas y tablero de progreso métrico</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-[#0E4A72] shrink-0 stroke-[2.5]" />
-              <span>Garantía incondicional de satisfacción por 30 días</span>
-            </div>
-          </div>
-
-          {/* Green CTA Button as requested */}
-          <div className="w-full pt-2">
-            <PrimaryButton
-              id="btn-checkout-cta"
-              variant="green"
-              href={CHECKOUT_SHOPIFY_URL}
-              target="_blank"
-              onClick={handleCheckout}
-            >
-              OBTENER MI PLAN DOLORCIAO
-            </PrimaryButton>
-          </div>
-
-          {/* Security Badges */}
-          <div className="flex justify-center items-center gap-3 text-[11.5px] text-slate-500 pt-1">
-            <span>🔒 Pago 100% Seguro</span>
-            <span>•</span>
-            <span>⚡ Acceso Inmediato en tu Celular</span>
-          </div>
-        </div>
-
-        {/* 30-Day Guarantee Box con imagen en grande arriba y texto exacto */}
-        <div className="w-full bg-[#EDF4F9] border border-[#CBD5E1] rounded-[22px] p-6 sm:p-7 flex flex-col items-center text-center shadow-xs">
-          {/* Imagen de la garantía en grande arriba del texto */}
-          <div className="w-full max-w-[240px] sm:max-w-[280px] mx-auto mb-4">
-            <img
-              src="/images/garantia-30-dias.png"
-              alt="Garantía 30 Días DolorCiao"
-              className="w-full h-auto object-contain drop-shadow-md mx-auto"
-              referrerPolicy="no-referrer"
-            />
-          </div>
-
-          <div className="flex flex-col gap-3 max-w-md mx-auto text-center">
-            <p className="text-[14px] sm:text-[15px] text-slate-700 leading-relaxed font-medium">
-              La compra de este material es totalmente sin riesgo para vos.
-              <br />
-              Si no cumple con tus expectativas dentro de los primeros 30 días posteriores a la compra, te reembolsaremos el 100% del importe pagado, sin hacer preguntas.
-            </p>
-            <p className="text-[14px] sm:text-[15px] text-slate-800 font-semibold pt-1">
-              Solo tenés que enviar un correo al soporte:
-              <br />
-              <a
-                href="mailto:dolorciao00@gmail.com"
-                className="text-[#0E4A72] font-extrabold underline hover:text-[#0A3552] text-[15px]"
-              >
-                dolorciao00@gmail.com
-              </a>
-            </p>
-          </div>
-        </div>
-
-        {/* FAQ Accordion */}
-        <div className="w-full flex flex-col gap-3 pt-2">
-          <h3
-            className="text-[19px] font-bold text-[#1E293B] text-center mb-1"
-            style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}
-          >
-            Preguntas Frecuentes
-          </h3>
+          Preguntas Frecuentes
+        </h3>
+        <div className="flex flex-col gap-3">
           {faqs.map((faq, idx) => {
             const isOpen = !!openFaqs[idx];
             return (
@@ -865,20 +655,111 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
             );
           })}
         </div>
+      </section>
 
-        {/* Final Bottom Green CTA */}
-        <div className="w-full pt-2">
-          <PrimaryButton
-            id="btn-bottom-final-cta"
-            variant="green"
-            href={CHECKOUT_SHOPIFY_URL}
-            target="_blank"
-            onClick={handleCheckout}
+      {/* Divider */}
+      <div className="w-full border-t border-slate-200 my-1" />
+
+      {/* ========================================================================= */}
+      {/* 4. TESTIMONIOS                                                            */}
+      {/* ========================================================================= */}
+      <section className="w-full flex flex-col gap-5" id="testimonials-section">
+        <div className="w-full text-center space-y-1.5">
+          <div className="inline-block bg-[#EDF4F9] text-[#0E4A72] border border-[#CBD5E1] text-[12px] font-bold px-3 py-0.5 rounded-full">
+            Historias y Casos Reales
+          </div>
+          <h3
+            id="testimonials-title"
+            className="text-[21px] sm:text-[25px] font-bold text-[#1E293B] leading-tight"
+            style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}
           >
-            OBTENER MI PLAN DOLORCIAO
-          </PrimaryButton>
+            Personas que ya transformaron su bienestar con{' '}
+            <span className="text-[#0E4A72] font-extrabold">DolorCiao</span>
+          </h3>
+          <p className="text-[13px] text-slate-500 max-w-sm mx-auto">
+            Historias reales de personas que recuperaron su flexibilidad y postura diaria:
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-3.5">
+          {testimonials.map((t) => (
+            <div
+              key={t.id}
+              className="w-full bg-white border border-[#CBD5E1] rounded-[18px] p-4 sm:p-5 flex flex-col gap-2.5 shadow-xs text-left"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <img
+                    src={t.image}
+                    alt={t.name}
+                    className="w-12 h-12 sm:w-13 sm:h-13 rounded-full object-cover border border-[#CBD5E1] shadow-2xs shrink-0"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div>
+                    <h4 className="font-bold text-[#1E293B] text-[14.5px] leading-tight">
+                      {t.name}
+                    </h4>
+                    <span className="text-[11.5px] text-slate-500">{t.age}</span>
+                  </div>
+                </div>
+                {renderStars(t.rating)}
+              </div>
+              <div className="inline-block bg-slate-100 text-[#0E4A72] text-[11.5px] font-bold px-2.5 py-0.5 rounded-md self-start border border-slate-200">
+                {t.condition}
+              </div>
+              <p className="text-[13px] text-slate-700 leading-relaxed italic bg-slate-50 p-3 rounded-[12px] border border-slate-200/60">
+                "{t.quote}"
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="w-full border-t border-slate-200 my-1" />
+
+      {/* ========================================================================= */}
+      {/* 5. SEGUNDO CUADRANTE DE PRECIO COMPLETO (JUSTO ARRIBA DE LA GARANTÍA)     */}
+      {/* ========================================================================= */}
+      <section className="w-full flex flex-col gap-4" id="pricing-bottom-section">
+        {renderPricingCard('pricing-card-bottom')}
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 7. GARANTÍA A LO ÚLTIMO DE TODO (COMO FUE SOLICITADO)                     */}
+      {/* ========================================================================= */}
+      <section className="w-full pt-2" id="guarantee-final-section">
+        <div className="w-full bg-[#EDF4F9] border border-[#CBD5E1] rounded-[22px] p-6 sm:p-7 flex flex-col items-center text-center shadow-xs">
+          {/* Imagen de la garantía en grande arriba del texto */}
+          <div className="w-full max-w-[240px] sm:max-w-[280px] mx-auto mb-4">
+            <img
+              src="/images/garantia-30-dias.png"
+              alt="Garantía 30 Días DolorCiao"
+              className="w-full h-auto object-contain drop-shadow-md mx-auto"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+
+          <div className="flex flex-col gap-3 max-w-md mx-auto text-center">
+            <p className="text-[14px] sm:text-[15px] text-slate-700 leading-relaxed font-medium">
+              La compra de este material es totalmente sin riesgo para vos.
+              <br />
+              Si no cumple con tus expectativas dentro de los primeros 30 días posteriores a la compra, te reembolsaremos el 100% del importe pagado, sin hacer preguntas.
+            </p>
+            <p className="text-[14px] sm:text-[15px] text-slate-800 font-semibold pt-1">
+              Solo tenés que enviar un correo al soporte:
+              <br />
+              <a
+                href="mailto:dolorciao00@gmail.com"
+                className="text-[#0E4A72] font-extrabold underline hover:text-[#0A3552] text-[15px]"
+              >
+                dolorciao00@gmail.com
+              </a>
+            </p>
+          </div>
         </div>
       </section>
     </div>
   );
 };
+

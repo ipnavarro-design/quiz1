@@ -73,6 +73,41 @@ export const TinglingSpineIcon: React.FC<{ className?: string }> = ({ className 
   </div>
 );
 
+// Anatomical Icon 5: Dorsal region (mid-back pain hotspot)
+export const DorsalIcon: React.FC<{ className?: string }> = ({ className = 'w-12 h-12' }) => (
+  <div className={`relative flex items-center justify-center shrink-0 rounded-xl bg-neutral-100 overflow-hidden ${className}`}>
+    <svg viewBox="0 0 64 64" className="w-full h-full p-1" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Torso outline back view */}
+      <path d="M20 12C24 16 40 16 44 12C46 22 47 34 45 52C39 54 25 54 19 52C17 34 18 22 20 12Z" fill="#E5E7EB" stroke="#9CA3AF" strokeWidth="1.5" />
+      {/* Spine column */}
+      <path d="M32 14V48" stroke="#6B7280" strokeWidth="2" strokeDasharray="2 2" />
+      {/* Dorsal / Mid-back Glow */}
+      <circle cx="32" cy="26" r="9" fill="#DC2626" fillOpacity="0.3" />
+      <circle cx="32" cy="26" r="5.5" fill="#DC2626" fillOpacity="0.75" />
+      <circle cx="32" cy="26" r="2.5" fill="#FFFFFF" />
+      {/* Indicator rays */}
+      <path d="M24 26H18M46 26H40M32 19V14M32 33V38" stroke="#DC2626" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  </div>
+);
+
+// Anatomical Icon 6: Toda la espalda / Widespread spine tension
+export const FullBackIcon: React.FC<{ className?: string }> = ({ className = 'w-12 h-12' }) => (
+  <div className={`relative flex items-center justify-center shrink-0 rounded-xl bg-neutral-100 overflow-hidden ${className}`}>
+    <svg viewBox="0 0 64 64" className="w-full h-full p-1" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Torso outline back view */}
+      <path d="M20 12C24 16 40 16 44 12C46 22 47 34 45 52C39 54 25 54 19 52C17 34 18 22 20 12Z" fill="#E5E7EB" stroke="#9CA3AF" strokeWidth="1.5" />
+      {/* Spine column */}
+      <path d="M32 14V48" stroke="#DC2626" strokeWidth="2.5" />
+      {/* Multiple hotspots along spine */}
+      <circle cx="32" cy="20" r="4.5" fill="#DC2626" fillOpacity="0.8" />
+      <circle cx="32" cy="30" r="4.5" fill="#DC2626" fillOpacity="0.8" />
+      <circle cx="32" cy="40" r="4.5" fill="#DC2626" fillOpacity="0.8" />
+      <circle cx="32" cy="30" r="2" fill="#FFFFFF" />
+    </svg>
+  </div>
+);
+
 // Clinical document icon with checkmark for Question 4
 export const ClinicalDocIcon: React.FC<{ className?: string }> = ({ className = 'w-10 h-10' }) => (
   <div className={`relative flex items-center justify-center shrink-0 rounded-xl bg-blue-50 text-[#2563EB] border border-blue-100 ${className}`}>
