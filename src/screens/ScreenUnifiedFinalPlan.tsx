@@ -4,6 +4,7 @@ import { Eyebrow } from '../components/Eyebrow';
 import { ProgressBar } from '../components/ProgressBar';
 import { PrimaryButton } from '../components/PrimaryButton';
 import { QuizResponses } from '../types';
+import { trackCustomOnce } from '../tracking';
 
 interface ScreenUnifiedFinalPlanProps {
   onFinalAction: () => void;
@@ -27,6 +28,31 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
     if (typeof window !== 'undefined' && typeof (window as any).fbq === 'function') {
       (window as any).fbq('track', 'Lead');
     }
+    trackCustomOnce('RE_ResultadosPersonalizados');
+  }, []);
+
+  // Track ViewOffer when the price block ($7.797 ARS) enters the viewport for the first time
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof IntersectionObserver === 'undefined') return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            trackCustomOnce('ViewOffer');
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    const priceNodes = document.querySelectorAll('[data-track-offer-price="true"]');
+    priceNodes.forEach((node) => observer.observe(node));
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   useEffect(() => {
@@ -45,6 +71,7 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
   const CHECKOUT_SHOPIFY_URL = 'https://dolorciaopago.myshopify.com/cart/46514408620129:1?checkout';
 
   const handleCheckout = () => {
+    trackCustomOnce('InitiateCheckout');
     if (onFinalAction) {
       onFinalAction();
     }
@@ -120,7 +147,7 @@ export const ScreenUnifiedFinalPlan: React.FC<ScreenUnifiedFinalPlanProps> = ({
       </div>
 
       {/* Price Display in Argentine Pesos (ARS) */}
-      <div className="flex flex-col gap-1.5 py-2 border-y border-slate-100">
+      <div data-track-offer-price="true" className="flex flex-col gap-1.5 py-2 border-y border-slate-100">
         <div className="flex items-baseline gap-3 flex-wrap">
           <span className="text-[16px] text-slate-400 line-through font-semibold">
             $25.990 ARS
