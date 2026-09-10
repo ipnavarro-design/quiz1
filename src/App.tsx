@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { QuizResponses, ScreenIndex, alFinalizarFunnel } from './types';
-import { trackCustomOnce } from './tracking';
 import { Screen0Hero } from './screens/Screen0Hero';
 import { Screen0Gender } from './screens/Screen0Gender';
 import { Screen0Age } from './screens/Screen0Age';
@@ -72,157 +71,134 @@ export default function App() {
   };
 
   const handleContinueSocialProof = () => {
-    trackCustomOnce('IB_Refuerzo');
     goToNextScreen();
   };
 
   // Step 1: Género
   const handleSelectGenero = (option: string) => {
-    trackCustomOnce('Q1_Genero');
     setRespuestas((prev) => ({ ...prev, genero: option }));
     goToNextScreen();
   };
 
   // Step 2: Edad
   const handleSelectEdad = (option: string) => {
-    trackCustomOnce('Q2_Edad');
     setRespuestas((prev) => ({ ...prev, edad: option }));
     goToNextScreen();
   };
 
   // Step 3: ¿Conocés la Movilidad?
   const handleSelectConoceMovilidad = (option: string) => {
-    trackCustomOnce('Q3_Familiaridad');
     setRespuestas((prev) => ({ ...prev, conoceMovilidad: option }));
     goToNextScreen();
   };
 
   // Step 4: Información sobre la Movilidad
   const handleContinueMobilityInfo = () => {
-    trackCustomOnce('IA_Metodo');
     goToNextScreen();
   };
 
   // Step 5: Altura
   const handleSelectHeight = (heightCm: number) => {
-    trackCustomOnce('Q16_Altura');
     setRespuestas((prev) => ({ ...prev, altura: heightCm }));
     goToNextScreen();
   };
 
   // Step 6: Peso
   const handleSelectWeight = (weightKg: number) => {
-    trackCustomOnce('Q17_Peso');
     setRespuestas((prev) => ({ ...prev, peso: weightKg }));
     goToNextScreen();
   };
 
   // Step 7: Nombre
   const handleSelectName = (name: string) => {
-    trackCustomOnce('Q18_Nombre');
     setRespuestas((prev) => ({ ...prev, nombre: name }));
     goToNextScreen();
   };
 
-  // Step 8: Métodos previos (actividades probadas)
+  // Step 8: Métodos previos
   const handleSelectMetodosPrevios = (methods: string[]) => {
-    trackCustomOnce('Q4_Actividades');
     setRespuestas((prev) => ({ ...prev, metodosPrevios: methods }));
     goToNextScreen();
   };
 
-  // Step 9: Localización del dolor / zona de tensión
+  // Step 9: Localización del dolor
   const handleSelectPregunta1 = (option: string) => {
-    trackCustomOnce('Q5_ZonaTension');
     setRespuestas((prev) => ({ ...prev, pregunta1: option }));
     goToNextScreen();
   };
 
-  // Step 10: Zonas de dolor al realizar movimientos (zonas protegidas)
+  // Step 10: Zonas de dolor al realizar movimientos
   const handleSelectZonasDolorMovimiento = (zones: string[]) => {
-    trackCustomOnce('Q6_ZonasProtegidas');
     setRespuestas((prev) => ({ ...prev, zonasDolorMovimiento: zones }));
     goToNextScreen();
   };
 
-  // Step 10: Días con dolor en la semana (frecuencia)
+  // Step 10: Días con dolor en la semana
   const handleSelectDiasDolorSemana = (option: string) => {
-    trackCustomOnce('Q7_Frecuencia');
     setRespuestas((prev) => ({ ...prev, diasDolorSemana: option }));
     goToNextScreen();
   };
 
   // Step 11: Nivel de actividad física
   const handleSelectNivelActividad = (option: string) => {
-    trackCustomOnce('Q8_NivelActividad');
     setRespuestas((prev) => ({ ...prev, nivelActividad: option }));
     goToNextScreen();
   };
 
-  // Step 12: Lugar de rutinas (preferencia)
+  // Step 12: Lugar de rutinas
   const handleSelectLugarRutinas = (option: string) => {
-    trackCustomOnce('Q9_Preferencia');
     setRespuestas((prev) => ({ ...prev, lugarRutinas: option }));
     goToNextScreen();
   };
 
-  // Step 14: Tiempo con el dolor (cronicidad)
+  // Step 14: Tiempo con el dolor
   const handleSelectPregunta2 = (option: string) => {
-    trackCustomOnce('Q10_Cronicidad');
     setRespuestas((prev) => ({ ...prev, pregunta2: option }));
     goToNextScreen();
   };
 
   // Step 15: Intensidad del dolor
   const handleSelectPregunta3 = (option: string) => {
-    trackCustomOnce('Q11_Intensidad');
     setRespuestas((prev) => ({ ...prev, pregunta3: option }));
     goToNextScreen();
   };
 
-  // Step 16: Duración deseada de rutinas (tiempo)
+  // Step 16: Duración deseada de rutinas
   const handleSelectDuracionRutinas = (option: string) => {
-    trackCustomOnce('Q12_Tiempo');
     setRespuestas((prev) => ({ ...prev, duracionRutinas: option }));
     goToNextScreen();
   };
 
-  // Step 17: Educación de tiempo: 10-15 min al día (resumen plan)
+  // Step 17: Educación de tiempo: 10-15 min al día
   const handleContinueTimeEdu = () => {
-    trackCustomOnce('IC_ResumenPlan');
     goToNextScreen();
   };
 
   // Step 18: Horas de sueño
   const handleSelectHorasSueno = (option: string) => {
-    trackCustomOnce('Q13_Sueno');
     setRespuestas((prev) => ({ ...prev, horasSueno: option }));
     goToNextScreen();
   };
 
   // Step 19: Consumo de agua
   const handleSelectConsumoAgua = (option: string) => {
-    trackCustomOnce('Q14_Agua');
     setRespuestas((prev) => ({ ...prev, consumoAgua: option }));
     goToNextScreen();
   };
 
   // Step 20: Impacto en vida diaria
   const handleSelectPregunta5 = (option: string) => {
-    trackCustomOnce('Q15_ImpactoVida');
     setRespuestas((prev) => ({ ...prev, pregunta5: option }));
     goToNextScreen();
   };
 
-  // Step 22: Riesgos de no tratar el dolor (gauge rigidez)
+  // Step 22: Riesgos de no tratar el dolor
   const handleContinueRisks = () => {
-    trackCustomOnce('ID_GaugeRigidez');
     goToNextScreen();
   };
 
   // Step 23: Objetivos para los próximos 30 días
   const handleSelectObjetivos30Dias = (goals: string[]) => {
-    trackCustomOnce('Q19_Objetivos');
     setRespuestas((prev) => ({ ...prev, objetivos30Dias: goals }));
     setCurrentScreen(25);
   };
@@ -244,7 +220,6 @@ export default function App() {
 
   // Step 28: Acción final / checkout
   const handleFinalCheckoutAction = () => {
-    trackCustomOnce('InitiateCheckout');
     setIsFinalSubmitted(true);
     alFinalizarFunnel(respuestas);
     const checkoutUrl = 'https://dolorciaopago.myshopify.com/cart/46514408620129:1?checkout';
