@@ -478,15 +478,24 @@ export default function App() {
       </div>
 
       {/* Editorial Subtle Footer */}
-      <footer className="w-full max-w-[448px] mx-auto pt-4 mt-2 flex items-center justify-between border-t border-[#1A1A1A]/10 text-[10px] uppercase tracking-[0.15em] text-[#1A1A1A]/40 font-medium">
-        <span>&copy; DOLORCIAO</span>
-        <div className="flex gap-3">
-          <span>Movilidad</span>
-          <span>&bull;</span>
-          <span>Postura</span>
-          <span>&bull;</span>
-          <span>Bienestar</span>
+      <footer className="w-full max-w-[448px] mx-auto pt-4 mt-3 flex flex-col items-center gap-2.5 border-t border-[#1A1A1A]/10 text-center">
+        <div className="w-full flex items-center justify-between text-[10px] uppercase tracking-[0.15em] text-[#1A1A1A]/40 font-medium">
+          <span>&copy; DOLORCIAO</span>
+          <div className="flex gap-3">
+            <span>Movilidad</span>
+            <span>&bull;</span>
+            <span>Postura</span>
+            <span>&bull;</span>
+            <span>Bienestar</span>
+          </div>
         </div>
+
+        {/* Legal Disclaimer / Meta Disclosure */}
+        <p className="text-[9.5px] sm:text-[10px] text-[#1A1A1A]/45 leading-relaxed text-center font-normal px-1">
+          Este sitio no forma parte ni está avalado por Meta™ (Facebook™ o Instagram™).
+          Facebook™ e Instagram™ son marcas registradas de Meta Platforms, Inc. Al utilizar este
+          sitio aceptás nuestra Política de Privacidad y Términos y Condiciones.
+        </p>
       </footer>
     </main>
   );

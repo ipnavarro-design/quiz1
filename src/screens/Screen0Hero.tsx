@@ -23,7 +23,8 @@ export const Screen0Hero: React.FC<Screen0HeroProps> = ({ onContinue }) => {
         <img
           src="/images/ChatGPT Image 9 sept 2026, 05_58_52 p.m..png"
           alt="Regalo especial al completar"
-          className="w-32 sm:w-36 h-auto object-contain drop-shadow-md"
+          className="w-[400px] max-w-full h-[130px] object-contain drop-shadow-md"
+          style={{ width: '400px', height: '130px' }}
           referrerPolicy="no-referrer"
         />
       </div>
